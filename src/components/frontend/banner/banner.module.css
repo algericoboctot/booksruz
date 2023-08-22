@@ -1,0 +1,11 @@
+.banner {
+    background: linear-gradient(135deg, #45108A 0%, #3D065F 55.21%, #3D065F 67.63%, #10054D 100%);
+}
+
+@media ( min-width: 1536px ) {
+    .banner {
+        background-image: url('../../../../public/hero-bg.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}

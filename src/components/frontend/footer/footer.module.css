@@ -1,0 +1,58 @@
+.footer {
+    background: linear-gradient(135deg, #45108A 0%, #3D065F 55.21%, #3D065F 67.63%, #10054D 100%);
+}
+
+.list li {
+    position: relative;
+    padding-left: 16px;
+}
+
+.list li:before {
+    content:"";
+    background-image: url('../../../../public/arrow-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 10px;
+    display: block;
+}
+
+.list li a {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.social-media a {
+    margin-left: 13px;
+}
+
+.social-media a:first-child {
+    margin-left: 0;
+}
+
+@media ( min-width: 1024px) {
+    .list li:before {
+        top: 11px;
+    }
+    .list li a {
+        font-size: 22px;
+        line-height: 36px;
+    }
+}
+
+@media ( min-width: 1280px) {
+    .list li:before {
+        top: 11px;
+    }
+    .list li a {
+        font-size: 22px;
+        line-height: 36px;
+    }
+
+    .social-media a {
+        margin-left: 23px;
+    }
+}

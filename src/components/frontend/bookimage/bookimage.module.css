@@ -1,0 +1,24 @@
+.book__placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(50% 50% at 50% 50%, #260448 0%, rgba(0, 0, 0, 0) 100%), linear-gradient(21.75deg, #260448 2.56%, rgba(0, 0, 0, 0) 106.11%), #7109C2;
+}
+
+
+.book__cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book__coverholder {
+    width: 18rem;
+    margin-bottom: 2rem;
+}
+
+.book__placeholder svg {
+    width: 100%;
+    height: 100%;
+}
