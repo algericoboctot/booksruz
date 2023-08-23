@@ -15,11 +15,6 @@ const Navigation = () => {
                             Books
                         </Link>
                     </li>
-                    <li className="md:ml-[16px] my-[10px] md:my-0 md:mr-0">
-                        <Link className="font-bold text-[#260448] hover:text-[#7C00FF] ease-out duration-500" href="/my-cart">
-                            My Cart
-                        </Link>
-                    </li>
                 </ul>
             </nav>
         </>

@@ -81,7 +81,7 @@ const SearchHeader = () => {
             <div className={`${classes['search-header']} pt-[19px] pb-[21px]`}>
                 <div className="container px-4 2xl:px-0">
                     <div className="flex flex-wrap items-center">
-                        <div className="ml-auto relative w-full max-w-[955px]">
+                        <div className="mx-auto relative w-full max-w-[955px]">
                             <form className="relative w-full" onSubmit={submitSearch} action="">
                                 <div className="relative z-0">
                                     <label htmlFor="search-input" className="absolute z-0 text-[18px] lg:text-[24px] text-[#8A8A8A]">Book Title</label>

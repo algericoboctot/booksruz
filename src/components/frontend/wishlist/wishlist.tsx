@@ -1,7 +1,7 @@
 const WishList = () => {
     return(
         <>
-            <h5>Wish List</h5>
+            <button type="button">Wishlist</button>
         </>
     );
 }
