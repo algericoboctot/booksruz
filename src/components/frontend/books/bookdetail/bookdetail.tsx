@@ -69,7 +69,7 @@ const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantit
                             </p>
                             <Rating />
                         </div>
-                        <div className='ml-auto mb-4 flex flex-wrap flex-col md:flex-row'>
+                        <div className='ml-auto mb-4 flex flex-wrap flex-col md:flex-row gap-2'>
                             <AddToCart />
                             <WishList />
                         </div>

@@ -10,7 +10,7 @@ const Rating = () => {
                     <StarIcon color="#FFB800" />
                     <StarIcon color="#FFB800" />
                 </div>
-                <span className="text-[#0F172A] text-base leading-[18.74px]">90 Reviews</span> 
+                <div className="text-[#0F172A] text-base leading-[16px] ml-4">90 Reviews</div> 
             </div>
             
         </>
