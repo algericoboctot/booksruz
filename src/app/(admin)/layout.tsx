@@ -2,9 +2,9 @@ import { ReactNode } from 'react';
 import '@/app/globals.css';
 import { Inter, Roboto } from 'next/font/google'
 import Head from 'next/head';
-import MainFooter from '@/components/frontend/footer/footer';
-import AdminHeader from '@/components/admin/header/header';
-import AdminFooter from '@/components/admin/footer/footer';
+import MainFooter from '@/components/frontend/layouts/footer/footer';
+import AdminHeader from '@/components/admin/layouts/header/header';
+import AdminFooter from '@/components/admin/layouts/footer/footer';
 
 const roboto = Roboto({
   weight: ['100','300','400','500','700','900'],

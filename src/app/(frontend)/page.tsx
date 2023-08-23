@@ -1,8 +1,8 @@
 
 import { Suspense } from 'react';
 
-import FeaturedBooksList from '@/components/frontend/featuredbooks/featuredbooks';
-import Banner from '@/components/frontend/banner/banner';
+import FeaturedBooksList from '@/components/frontend/books/featuredbooks/featuredbooks';
+import Banner from '@/components/frontend/layouts/banner/banner';
 import BookListLoader from '@/ui/placeholders/booklist-loader/booklistplaceholder';
 import GenresList from '@/components/frontend/genreslist/genreslist';
 import fetchBooks from '@/libs/frontend/fetchBooks';

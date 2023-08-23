@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { IItem } from "@/interfaces/frontend/books";
-import BookImage from "@/components/frontend/bookimage/bookimage";
+import BookImage from "@/components/frontend/books/bookimage/bookimage";
 import { usePathname } from 'next/navigation';
 
 

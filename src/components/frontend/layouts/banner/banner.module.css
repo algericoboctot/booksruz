@@ -4,7 +4,7 @@
 
 @media ( min-width: 1536px ) {
     .banner {
-        background-image: url('../../../../public/hero-bg.svg');
+        background-image: url('../../../../../public/hero-bg.svg');
         background-repeat: no-repeat;
         background-size: cover;
     }

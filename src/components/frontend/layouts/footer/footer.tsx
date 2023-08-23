@@ -1,4 +1,4 @@
-import classes from '@/components/frontend/footer/footer.module.css';
+import classes from '@/components/frontend/layouts/footer/footer.module.css';
 import Link from "next/link";
 import GoogleIcon from '@/icons/google';
 import FacebookIcon from '@/icons/facebook';

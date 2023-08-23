@@ -1,4 +1,4 @@
-import BookItem from '@/components/frontend/bookitem/bookitem';
+import BookItem from '@/components/frontend/books/bookitem/bookitem';
 import { IItem } from '@/interfaces/frontend/books';
 import fetchBooks from '@/libs/frontend/fetchBooks';
 

@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import debounce from 'lodash.debounce';
-import Banner from "@/components/frontend/banner/banner";
+import Banner from "@/components/frontend/layouts/banner/banner";
 import GenresList from "@/components/frontend/genreslist/genreslist";
-import Search from "@/components/frontend/search/search";
+import Search from "@/components/frontend/searches/search/search";
 import BookListLoader from "@/ui/placeholders/booklist-loader/booklistplaceholder";
 import Pagination from '@/components/frontend/pagination/pagination';
-import BooksLists from "@/components/frontend/booklists/booklists";
+import BooksLists from "@/components/frontend/books/booklists/booklists";
 import useQueryBooks from "@/libs/frontend/useQueryBooks";
 import Newsletter from "@/components/frontend/newsletter/newsletter";
 

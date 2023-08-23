@@ -9,7 +9,7 @@
 
 .list li:before {
     content:"";
-    background-image: url('../../../../public/arrow-icon.svg');
+    background-image: url('../../../../../public/arrow-icon.svg');
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;

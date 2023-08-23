@@ -4,8 +4,8 @@ import {useState} from 'react';
 import Logo from '@/icons/logo';
 import LogoName from '@/icons/logoname';
 import Link from 'next/link';
-import MainNavigation from '@/components/frontend/navigation/navigation';
-import classes from '@/components/frontend/header/header.module.css';
+import MainNavigation from '@/components/frontend/layouts/navigation/navigation';
+import classes from '@/components/frontend/layouts/header/header.module.css';
 const MainHeader = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
 

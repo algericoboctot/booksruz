@@ -81,13 +81,6 @@ const SearchHeader = () => {
             <div className={`${classes['search-header']} pt-[19px] pb-[21px]`}>
                 <div className="container px-4 2xl:px-0">
                     <div className="flex flex-wrap items-center">
-                        <div className="text-white">
-                            <ul className="flex flex-wrap text-[22px] leading-[100%]">
-                                <li>Books in cart: <Link href="/my-cart">10</Link></li>
-                                <li className="ml-4">Wishlist: <Link href="/wishlist">9</Link></li>
-                            </ul>
-                            
-                        </div>
                         <div className="ml-auto relative w-full max-w-[955px]">
                             <form className="relative w-full" onSubmit={submitSearch} action="">
                                 <div className="relative z-0">

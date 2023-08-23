@@ -7,8 +7,8 @@ import useQueryBooks from "@/libs/frontend/useQueryBooks";
 import fetchBooks from "@/libs/frontend/fetchBooks";
 import { Genres } from '@/types/frontend/books';
 
-import Banner from "@/components/frontend/banner/banner";
-import BooksLists from "@/components/frontend/booklists/booklists";
+import Banner from "@/components/frontend/layouts/banner/banner";
+import BooksLists from "@/components/frontend/books/booklists/booklists";
 import Sorting from "@/components/frontend/sorting/sorting";
 import BookListLoader from "@/ui/placeholders/booklist-loader/booklistplaceholder";
 import Newsletter from "@/components/frontend/newsletter/newsletter";

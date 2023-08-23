@@ -1,12 +1,12 @@
 import { Suspense, useEffect } from "react";
 
-import BookDetail from "@/components/frontend/bookdetail/bookdetail";
+import BookDetail from "@/components/frontend/books/bookdetail/bookdetail";
 import useQueryBooks from "@/libs/frontend/useQueryBooks";
 import { IItemDetails } from '@/interfaces/frontend/books';
 import fetchBooks from "@/libs/frontend/fetchBooks";
 import BookImageLoader from "@/ui/placeholders/book-image-loader/book-image-loader";
-import Search from "@/components/frontend/search/search";
-import SearchHeader from "@/components/frontend/search-header/search";
+import Search from "@/components/frontend/searches/search/search";
+import SearchHeader from "@/components/frontend/searches/search-header/search";
 import Link from "next/link";
 
 

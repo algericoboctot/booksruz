@@ -1,8 +1,8 @@
 'use client';
 
-import BookItem from "@/components/frontend/bookitem/bookitem";
-import BooksLists from "@/components/frontend/booklists/booklists";
-import Search from "@/components/frontend/search/search";
+import BookItem from "@/components/frontend/books/bookitem/bookitem";
+import BooksLists from "@/components/frontend/books/booklists/booklists";
+import Search from "@/components/frontend/searches/search/search";
 import { IItem } from "@/interfaces/frontend/books";
 import useQueryBooks from "@/libs/frontend/useQueryBooks";
 import BookItemLoader from "@/ui/placeholders/bookitem-loader/bookitemloader";

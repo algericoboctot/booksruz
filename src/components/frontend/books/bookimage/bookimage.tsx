@@ -3,7 +3,7 @@
 
 import { FC, Suspense, useEffect, useState } from "react";
 import Image from 'next/image';
-import classes from '@/components/frontend/bookimage/bookimage.module.css';
+import classes from '@/components/frontend/books/bookimage/bookimage.module.css';
 import BookImageLoader from '@/ui/placeholders/book-image-loader/book-image-loader';
 import { typeImagePath, typeImageTitle } from '@/types/frontend/books';
 import BookCover from '@/ui/placeholders/bookcover/bookcover';

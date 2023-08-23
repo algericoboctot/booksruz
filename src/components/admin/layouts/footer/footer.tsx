@@ -1,4 +1,4 @@
-import classes from '@/components/admin/footer/footer.module.css';
+import classes from '@/components/admin/layouts/footer/footer.module.css';
 import Link from 'next/link';
 
 const AdminFooter = () => {

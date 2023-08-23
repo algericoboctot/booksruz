@@ -1,7 +1,7 @@
 import Logo from "@/icons/logo";
 import LogoName from "@/icons/logoname";
 import Image from "next/image";
-import classes from '@/components/frontend/banner/banner.module.css';
+import classes from '@/components/frontend/layouts/banner/banner.module.css';
 
 const Banner = () => {
     return(
