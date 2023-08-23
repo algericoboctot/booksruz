@@ -6,8 +6,9 @@ import LogoName from '@/icons/logoname';
 import Link from 'next/link';
 import MainNavigation from '@/components/frontend/layouts/navigation/navigation';
 import classes from '@/components/frontend/layouts/header/header.module.css';
+import CartIcon from '../../../../icons/cart';
 const MainHeader = () => {
-    const [mobileMenu, setMobileMenu] = useState(false);
+    const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
     const mobileMenuHandler = () => {
         if (window.matchMedia("(max-width: 767px)").matches) {
@@ -46,7 +47,7 @@ const MainHeader = () => {
                             <MainNavigation />
                         </div>
                         <div className=''>
-                                    
+                            <CartIcon color="#000"/>
                         </div>
                     </div>
                 </div>
