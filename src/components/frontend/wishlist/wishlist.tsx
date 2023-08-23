@@ -32,7 +32,7 @@ const WishList = () => {
                 hover:ease-in
                 hover:border-[#EBECF1]
                 duration-300 flex flex-wrap flex-row items-center justify-center gap-6" 
-                type="button" onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}><HeartIcon border={border} background={background} /> Wishlist</button>
+                type="button" onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}><HeartIcon border={border} background={background} />Wishlist</button>
         </>
     );
 }
