@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HeartIcon from '@/icons/heart';
+import classes from '@/components/frontend/wishlist/wishlist.module.css';
 const WishList = () => {
     
     const [border, setBorder] = useState<string>('#000000');
@@ -23,7 +24,8 @@ const WishList = () => {
 
     return(
         <>
-            <button className="
+            <button className={`
+                ${classes['wishlist-btn']}
                 bg-[#F2F3FB] 
                 rounded-[8px] 
                 border-[#F2F3FB] 
@@ -34,7 +36,7 @@ const WishList = () => {
                 w-[150px] 
                 h-[50px] 
                 hover:ease-in
-                duration-300 flex flex-wrap flex-row items-center justify-center gap-6"
+                duration-300 flex flex-wrap flex-row items-center justify-center gap-6`}
                 style={{border: `3px solid ${btnBorder}`}}
                 type="button" onClick={clickHandler}><HeartIcon border={border} background={background} />Wishlist</button>
         </>

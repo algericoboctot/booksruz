@@ -8,7 +8,7 @@ const Backdrop = ({ onClose } : { onClose: () => void }) => {
     return <div className={classes.backdrop} onClick={onClose}/>;
 };
 
-const ModalOverlay = ( { children } : { children : ReactNode }) => {
+const ModalOverlay = ( { children } : { children : ReactNode } ) => {
     return (
       <div className={classes.modal}>
         <div className={classes.content}>{children}</div>

@@ -6,7 +6,8 @@ import LogoName from '@/icons/logoname';
 import Link from 'next/link';
 import MainNavigation from '@/components/frontend/layouts/navigation/navigation';
 import classes from '@/components/frontend/layouts/header/header.module.css';
-import CartIcon from '../../../../icons/cart';
+import CartStatus from '@/components/frontend/cart-status/cart';
+import WishlistStatus from '@/components/frontend/wishlist-status/wishlist';
 const MainHeader = () => {
     const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
@@ -43,11 +44,12 @@ const MainHeader = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className={`${classes['main-navigation']} ${mobileMenu ? classes.open : classes.hidden} md:ml-auto w-full md:w-auto md:visible md:flex xl:px-0`}>
+                        <div className={`${classes['main-navigation']} ${mobileMenu ? classes.open : classes.hidden} md:mx-auto w-full md:w-auto md:visible md:flex xl:px-0`}>
                             <MainNavigation />
                         </div>
-                        <div className=''>
-                            <CartIcon color="#000"/>
+                        <div className='md:ml-auto flex flex-row flex-wrap items-center gap-3 relative'>
+                            <CartStatus />
+                            <WishlistStatus />
                         </div>
                     </div>
                 </div>

@@ -69,10 +69,12 @@ const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantit
                             </p>
                             <Rating />
                         </div>
-                        <div className='ml-auto mb-4 flex flex-wrap flex-col md:flex-row gap-2'>
-                            <AddToCart />
+                        <div className='ml-auto mb-4 flex flex-wrap flex-col md:flex-row md:gap-2'>
                             <WishList />
                         </div>
+                    </div>
+                    <div className='py-3 border-t-[2.6px] border-[#F1F1F1]'>
+                        <AddToCart />
                     </div>
                     <p className='pt-3 text-[20px] lg:text-[28px] leading-[155%] border-t-[2.6px] border-[#F1F1F1] text-[#575D6A]'>
                         {summary}
