@@ -8,7 +8,7 @@ import Logo from "@/icons/logo";
 const MainFooter = () => {
     return (
         <>
-            <footer className={`${classes.footer} pt-[37px] md:pt-[47px] lg:pt-[67px] pb-[67px] md:pb-[77px] lg:pb-[97px] px-4 xl:px-0`}>
+            <footer className={`${classes.footer} pt-[37px] md:pt-[47px] lg:pt-[67px] pb-[67px] md:pb-[77px] lg:pb-[97px] px-4 xl:px-0 relative z-0`}>
                 <div className="container">
                     <div className="flex flex-col flex-wrap sm:flex-row text-white sm:mx-[-16px] xl:mx-[0] xl:justify-between">
                         <div className='mb-5 lg:mb-0 sm:px-4 xl:px-0 sm:w-1/2 sm:flex-[0_0_50%] lg:w-1/4 lg:flex-[0_0_25%] xl:w-full xl:flex-[0_0_100%] xl:max-w-[393px] sm:order-1'>

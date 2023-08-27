@@ -78,7 +78,7 @@ const SearchHeader = () => {
 
     return(
         <>
-            <div className={`${classes['search-header']} pt-[19px] pb-[21px]`}>
+            <div className={`${classes['search-header']} pt-[19px] pb-[21px] relative z-10`}>
                 <div className="container px-4 2xl:px-0">
                     <div className="flex flex-wrap items-center">
                         <div className="mx-auto relative w-full max-w-[955px]">

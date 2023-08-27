@@ -1,9 +1,12 @@
-import { ReactNode } from 'react';
+'use client';
+
+import { ReactNode, useState } from 'react';
 import '@/app/globals.css';
-import { Inter, Roboto } from 'next/font/google'
-import Head from 'next/head';
+import { Roboto } from 'next/font/google'
 import MainHeader from '@/components/frontend/layouts/header/header';
 import MainFooter from '@/components/frontend/layouts/footer/footer';
+import CartProvider from '@/store/frontend/cart/cartprovider';
+import WishProvider from '@/store/frontend/wishlist/wishprovide';
 
 const roboto = Roboto({
   weight: ['100','300','400','500','700','900'],
@@ -22,16 +25,20 @@ export default function RootLayout({
   children: ReactNode
 }) {
   const classList = [roboto.className,'bg-white'];
+  
   return (
     <html lang="en">
       <body className={classList.join(' ')}>
-        <div id="overlays"></div>
-        <main>
-          <MainHeader />
-            <section>
-                {children}
-            </section>
-          <MainFooter />
+        <main className='relative'>
+          <CartProvider>
+            <WishProvider>
+              <MainHeader />
+                <section className='relative z-10'>
+                    {children}
+                </section>
+              <MainFooter />
+            </WishProvider>
+          </CartProvider>
         </main>
       </body>
     </html>

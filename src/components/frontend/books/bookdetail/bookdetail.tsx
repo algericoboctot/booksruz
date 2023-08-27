@@ -4,12 +4,12 @@ import { useContext, useEffect, useState } from 'react';
 import { IItemDetails } from '@/interfaces/frontend/books';
 import BookImage from '@/components/frontend/books/bookimage/bookimage';
 import Rating from '@/components/frontend/rating/rating';
-import WishList from '@/components/frontend/wishlist/wishlist';
 import AddToCart from '@/components/frontend/addtocart/addcart';
 import CartContext from '@/store/frontend/cart/cartcontext';
 import { ICartItem } from '@/interfaces/frontend/cart';
+import AddWish from '@/components/frontend/addwish/wishlist';
 
-const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantity, id } : IItemDetails) => {
+const BookDetail = ( { title, author, isbn, price, genre, summary, id } : IItemDetails) => {
     const cartCtxt = useContext(CartContext);
 
     const cartItemAddHandler = (item: ICartItem) => {
@@ -78,11 +78,15 @@ const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantit
                             <Rating />
                         </div>
                         <div className='ml-auto mb-4 flex flex-wrap flex-col md:flex-row md:gap-2'>
-                            <WishList />
+                            <AddWish 
+                                id={id} 
+                                title={title}
+                                isbn={isbn}
+                            />
                         </div>
                     </div>
                     <div className='py-3 border-t-[2.6px] border-[#F1F1F1] flex flex-row flex-wrap items-center'>
-                        <div className='mr-auto text-xl'>&#36; {price}</div><AddToCart id={id} price={price} title={title} />
+                        <div className='mr-auto'><span className='text-xl'>&#36; {price}</span></div><AddToCart id={id} price={price} title={title} isbn={isbn}/>
                     </div>
                     <p className='pt-3 text-[20px] lg:text-[28px] leading-[155%] border-t-[2.6px] border-[#F1F1F1] text-[#575D6A]'>
                         {summary}

@@ -6,8 +6,8 @@ import LogoName from '@/icons/logoname';
 import Link from 'next/link';
 import MainNavigation from '@/components/frontend/layouts/navigation/navigation';
 import classes from '@/components/frontend/layouts/header/header.module.css';
-import CartStatus from '@/components/frontend/cart-status/cart';
-import WishlistStatus from '@/components/frontend/wishlist-status/wishlist';
+import CartStatus from '@/components/frontend/cart/cart';
+import Wishlists from '@/components/frontend/wishlist/wishlist';
 const MainHeader = () => {
     const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
@@ -18,7 +18,7 @@ const MainHeader = () => {
     }
     return(
         <>
-            <header>
+            <header className='relative z-20'>
                 <div className='container'>
                     <div className='flex flex-col w-full items-center md:flex-row'>
                         <div className='flex flex-row mr-auto items-center md:flex-[0_0_20rem] w-full my-[10px] px-4 2xl:px-0'>
@@ -49,7 +49,7 @@ const MainHeader = () => {
                         </div>
                         <div className='md:ml-auto flex flex-row flex-wrap items-center gap-3 relative'>
                             <CartStatus />
-                            <WishlistStatus />
+                            <Wishlists />
                         </div>
                     </div>
                 </div>

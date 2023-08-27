@@ -3,13 +3,13 @@
 
 import { FC, memo, useEffect, useState } from "react";
 import Image from 'next/image';
-import classes from '@/components/frontend/books/bookimage/bookimage.module.css';
+import classes from '@/components/frontend/cart/cartimage/cartimage.module.css';
 import BookImageLoader from '@/ui/placeholders/book-image-loader/book-image-loader';
 import { typeImagePath, typeImageTitle } from '@/types/frontend/books';
-import BookCover from '@/ui/placeholders/bookcover/bookcover';
 import fetchBooksImage from '@/libs/frontend/fetchBookImage';
+import BookIcon from "@/icons/book";
 
-const BookImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize}) => {
+const CartIMage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize}) => {
   
       const [imagePath, setImagePath] = useState<string | null>(null);
       const [imageTitle, setImageTitle] = useState<string | null>(null);
@@ -48,7 +48,7 @@ const BookImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
               {imagePath ? (
                 <Image className={`${imgSize}`} src={imagePath} alt={`${imageTitle}`} sizes="100vw" fill={true} />
               ) : (
-                <BookCover />
+                <span className='w-[30px] h-[30px]'><BookIcon color="#ffffff"/></span>
               )}
             </>
           )}
@@ -56,4 +56,4 @@ const BookImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
       );
 });
 
-export default BookImage;
+export default CartIMage;
