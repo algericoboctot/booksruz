@@ -1,5 +1,5 @@
 export interface IItem {
-    id: number;
+    id: string;
     author: string;
     slug: string;
     isbn: string;

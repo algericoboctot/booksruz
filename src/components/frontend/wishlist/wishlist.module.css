@@ -1,4 +1,9 @@
+
 .wishlist-btn:hover svg {
     fill: #FB5F5F;
-    stroke: #FB5F5F !important;
+
+}
+
+.wishlist-btn:hover svg path {
+    stroke: #FB5F5F;
 }

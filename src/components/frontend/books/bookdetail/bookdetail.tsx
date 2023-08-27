@@ -1,13 +1,21 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { IItemDetails } from '@/interfaces/frontend/books';
 import BookImage from '@/components/frontend/books/bookimage/bookimage';
 import Rating from '@/components/frontend/rating/rating';
 import WishList from '@/components/frontend/wishlist/wishlist';
 import AddToCart from '@/components/frontend/addtocart/addcart';
+import CartContext from '@/store/frontend/cart/cartcontext';
+import { ICartItem } from '@/interfaces/frontend/cart';
 
-const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantity } : IItemDetails) => {
+const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantity, id } : IItemDetails) => {
+    const cartCtxt = useContext(CartContext);
+
+    const cartItemAddHandler = (item: ICartItem) => {
+        cartCtxt.addItem(item);
+    };
+
     const [colors, setColors] = useState<string[]>([
         '#FF1493',
         '#FF6347',
@@ -73,8 +81,8 @@ const BookDetail = ( { title, author, isbn, slug, price, genre, summary, quantit
                             <WishList />
                         </div>
                     </div>
-                    <div className='py-3 border-t-[2.6px] border-[#F1F1F1]'>
-                        <AddToCart />
+                    <div className='py-3 border-t-[2.6px] border-[#F1F1F1] flex flex-row flex-wrap items-center'>
+                        <div className='mr-auto text-xl'>&#36; {price}</div><AddToCart id={id} price={price} title={title} />
                     </div>
                     <p className='pt-3 text-[20px] lg:text-[28px] leading-[155%] border-t-[2.6px] border-[#F1F1F1] text-[#575D6A]'>
                         {summary}
