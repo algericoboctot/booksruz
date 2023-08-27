@@ -1,9 +1,11 @@
+import Link from 'next/link';
 import CartIMage from "./cartimage/cartimage";
 
 const CartItemStatus = (
-      {title, price, isbn, amount, removeItem } : 
+      {title, price, isbn, amount, slug, removeItem } : 
       {
           isbn: string,
+          slug: string,
           price: number;
           title: string, 
           amount: number,
@@ -14,7 +16,9 @@ const CartItemStatus = (
   return (
     <li className="flex flex-row flex-wrap pb-[10px]">
           <div className="mr-auto w-[65px] h-[50px]">
-            <CartIMage isbn={isbn} imgSize='object-fill'/>
+            <Link href={slug}>
+              <CartIMage isbn={isbn} imgSize='object-fill'/>
+            </Link>
           </div>
           <div className="ml-auto flex-col flex-wrap w-[calc(100%-80px)]">
             <div className="flex flex-row flex-wrap items-start">

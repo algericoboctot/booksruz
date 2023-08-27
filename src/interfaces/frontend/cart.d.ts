@@ -1,5 +1,6 @@
 export interface ICartItem {
     id: string;
+    slug: string;
     isbn: string;
     title: string;
     price: number;

@@ -1,10 +1,10 @@
 import { ICartItem } from "@/interfaces/frontend/cart";
 import CartContext from "@/store/frontend/cart/cartcontext";
-import { FormEventHandler, useContext, useState} from "react";
+import { FC, FormEventHandler, useContext, useState} from "react";
 
-const AddToCart = ({id, title, price, isbn } : {  id: string, isbn: string, title: string, price: number}) => {
+const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
     const cartCtx = useContext(CartContext);
-    const [qty, setQty] = useState<number>(0);
+    const [qty, setQty] = useState<number>(amount);
     const [borderClr, setBorderClr] = useState<string>('');
     const [errorQty, setErrorQty] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -14,13 +14,16 @@ const AddToCart = ({id, title, price, isbn } : {  id: string, isbn: string, titl
     }
     
     const addToCartHandler = async (amount: number) => {
+
         const addedItem: ICartItem = {
             id: id,
+            slug: slug,
             isbn: isbn,
             title: title,
             amount: amount,
             price: price
         }
+        
         setIsLoading(true);
         await new Promise((resolve) => setTimeout(resolve, 1000));
         cartCtx.addItem(addedItem);

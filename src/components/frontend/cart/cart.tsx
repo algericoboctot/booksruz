@@ -54,6 +54,7 @@ const CartStatus = () => {
                                     <CartItemStatus
                                         key={item.id}
                                         title={item.title}
+                                        slug={item.slug}
                                         amount={item.amount}
                                         isbn={item.isbn}
                                         price={item.price}
@@ -62,13 +63,11 @@ const CartStatus = () => {
                                 ))}
                             </ul>
                             <div className='flex flex-wrap flex-row'>
-                                <div className='ml-auto'>
-                                    <span className='font-medium text-[18px]'>Subtotal:&nbsp;</span>
-                                    <span className='font-medium text-[18px]'>{totalAmount}</span>
-                                </div>
+                                <span className='mr-auto font-medium text-[18px]'>Subtotal:&nbsp;</span>
+                                <span className='ml-auto font-medium text-[18px]'>{totalAmount}</span>
                             </div>
                             <div className='flex flex-wrap justify-center flex-row'>
-                                <Link className="" href="/my-cart">View Cart</Link>
+                                <Link className="bg-[#260448]" href="/my-cart">View Cart</Link>
                                 <Link className="" href="/checkout">Checkout</Link>
                             </div>
                         </>) : <p>Empty cart!</p>}

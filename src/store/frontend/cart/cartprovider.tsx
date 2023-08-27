@@ -13,7 +13,6 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
   let updatedTotalAmount,
       existingCartItemIndex, 
       existingCartItem,
-      itemTotalAmount,
       updateItemTotalAmout,
       existingItem,
       updatedItem,
@@ -33,7 +32,6 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
         const updatedItem = {
           ...existingCartItem,
           amount: existingCartItem.amount + action.item.amount,
-          itemTotalAmount: itemTotalAmount
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
@@ -59,7 +57,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       if (existingItem.amount === 1) {
         updatedItems = state.items.filter((item:ICartItem) => item.id !== action.id);
       } else {
-        updatedItem = {...existingItem, amount: existingItem.amount - 1 };
+        updatedItem = {...existingItem, amount: existingItem.amount - 1};
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
       }

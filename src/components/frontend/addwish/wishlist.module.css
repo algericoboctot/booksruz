@@ -1,3 +1,6 @@
+.wishlist-btn:hover {
+    border: 3px solid #F2F3FB;
+}
 
 .wishlist-btn:hover svg {
     fill: #FB5F5F;

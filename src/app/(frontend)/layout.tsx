@@ -6,7 +6,7 @@ import { Roboto } from 'next/font/google'
 import MainHeader from '@/components/frontend/layouts/header/header';
 import MainFooter from '@/components/frontend/layouts/footer/footer';
 import CartProvider from '@/store/frontend/cart/cartprovider';
-import WishProvider from '@/store/frontend/wishlist/wishprovide';
+import WishProvider from '@/store/frontend/wishlist/wishprovider';
 
 const roboto = Roboto({
   weight: ['100','300','400','500','700','900'],
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: ReactNode
 }) {
   const classList = [roboto.className,'bg-white'];
-  
+
   return (
     <html lang="en">
       <body className={classList.join(' ')}>

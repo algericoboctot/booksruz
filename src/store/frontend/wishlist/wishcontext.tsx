@@ -6,6 +6,11 @@ const WishContextValue: IWishContextType = {
     items: [],
     isWished: false,
     totalWished: 0,
+    colors: {
+        border: "#F2F3FB",
+        background: "#F2F3FB",
+        btnBorder: "#F2F3FB"
+    },
     addItem: (item: IWishItem) => {},
     clearAllWish: () => {}
 }

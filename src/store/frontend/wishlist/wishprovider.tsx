@@ -4,24 +4,36 @@ import { TypeWishAction } from "@/types/frontend/wish";
 import { IWishState, IWishItem, IWishContextType } from "@/interfaces/frontend/wish";
 
 const defaultWishState: IWishState = {
-  items: [],
-  isWished: false,
-  totalWished: 0
+    items: [],
+    isWished: false,
+    totalWished: 0,
+    colors: {
+        border: "#000000",
+        background: "transparent",
+        btnBorder: "#F2F3FB"
+    },
 };
 
 const wishReducer = (state: IWishState, action: TypeWishAction): IWishState => {
     switch (action.type) {
         case 'TOGGLE':
             const itemExists = state.items.some(item => item.id === action.item.id);
+            
             if (!itemExists) {
                 const newItem: IWishItem = {
                     ...action.item,
-                    isWished: true
+                    isWished: true,
+                    colors: {
+                        border: "#FB5F5F",
+                        background: "transparent",
+                        btnBorder: "#EBECF1"
+                    }
                 };
                 return {
                     ...state,
                     items: [...state.items, newItem],
                     isWished: newItem.isWished,
+                    colors: newItem.colors,
                     totalWished: state.totalWished + 1
                 };
             } else {
@@ -32,6 +44,11 @@ const wishReducer = (state: IWishState, action: TypeWishAction): IWishState => {
                     ...state,
                     items: updatedItems,
                     isWished: false,
+                    colors: {
+                        border: "#000000",
+                        background: "#F2F3FB",
+                        btnBorder: "#F2F3FB"
+                    },
                     totalWished: state.totalWished - 1
                 };
             }
@@ -58,6 +75,7 @@ const WishProvider = ({ children } : {children: ReactNode} ) => {
         items: wishState.items,
         isWished: wishState.isWished,
         totalWished: wishState.totalWished,
+        colors: wishState.colors,
         addItem: addWishHandler,
         clearAllWish: clearAllWishHandler
     };
