@@ -3,28 +3,28 @@ import { useState, useContext } from 'react';
 import CartIcon from "@/icons/cart";
 import CartContext from '@/store/frontend/cart/cartcontext';
 import CartItemStatus from '@/components/frontend/cart/cartItem';
+import { ICartItem } from '@/interfaces/frontend/cart';
 
 const CartStatus = () => {
     const cartCtx = useContext(CartContext);
     const [hover, setHover] = useState<boolean>(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
-
     const items = cartCtx.items.length;
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
     
     const mouseInHandler = () => {
         setHover(true);
     }
 
-    const cartItemRemoveHandler = async (id: string) => {
+    const cartItemRemoveAllHandler = async (id: string) => {
         setIsLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        cartCtx.removeItem(id);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        cartCtx.removeAll(id);
         setIsLoading(false);
     };
 
-    const removeItemAllHandler = async () => {
-        cartCtx.clearCart();
+    const cartAddOneHandlder = (item: ICartItem) => {
+        cartCtx.addOne(item)
     }
 
     const mouseLeaveHandler = () => {
@@ -44,7 +44,7 @@ const CartStatus = () => {
                 )}
             </div>
             {hover && (
-                <div onMouseEnter={mouseInHandler} onMouseLeave={mouseLeaveHandler} className='absolute w-[420px] pt-6 top-[20px] right-0'>
+                <div onMouseEnter={mouseInHandler} onMouseLeave={mouseLeaveHandler} className='absolute w-[450px] pt-6 top-[20px] right-0'>
                     <div className='bg-white border-[#5c5b5b] border-[1px] rounded-md w-full p-5'>
                         <h4 className='mb-4 text-[20px] font-medium border-[#e0dfdf] border-b-[1px]'>Your current items in cart</h4>
                         { (items > 0 ) ? (
@@ -58,17 +58,49 @@ const CartStatus = () => {
                                         amount={item.amount}
                                         isbn={item.isbn}
                                         price={item.price}
-                                        removeItem={cartItemRemoveHandler.bind(null, item.id)}
+                                        removeAll={cartItemRemoveAllHandler.bind(null, item.id)}
                                     />
                                 ))}
                             </ul>
-                            <div className='flex flex-wrap flex-row'>
+                            <div className='flex flex-wrap flex-row mb-5'>
                                 <span className='mr-auto font-medium text-[18px]'>Subtotal:&nbsp;</span>
                                 <span className='ml-auto font-medium text-[18px]'>{totalAmount}</span>
                             </div>
-                            <div className='flex flex-wrap justify-center flex-row'>
-                                <Link className="bg-[#260448]" href="/my-cart">View Cart</Link>
-                                <Link className="" href="/checkout">Checkout</Link>
+                            <div className='flex flex-wrap justify-center flex-row gap-4'>
+                                <Link className="
+                                        bg-[#260448] 
+                                        rounded-[8px] 
+                                        w-[120px] 
+                                        h-[40px] 
+                                        border-[2px] 
+                                        border-[#260448] 
+                                        hover:bg-white 
+                                        hover:text-[#260448] 
+                                        transition: 
+                                        text-center 
+                                        text-[14px] 
+                                        leading-[36px] 
+                                        text-white 
+                                        font-medium
+                                        transition 
+                                        duration-300
+                                        " href="/my-cart">View Cart</Link>
+                                <Link className=" bg-[#ffffff] 
+                                        rounded-[8px] 
+                                        w-[120px] 
+                                        h-[40px] 
+                                        border-[2px] 
+                                        border-[#260448] 
+                                        hover:bg-[#260448] 
+                                        hover:text-white 
+                                        transition: 
+                                        text-center 
+                                        text-[14px] 
+                                        leading-[36px] 
+                                        text-[#260448] 
+                                        font-medium
+                                        transition 
+                                        duration-300" href="/checkout">Checkout</Link>
                             </div>
                         </>) : <p>Empty cart!</p>}
                         

@@ -26,7 +26,7 @@ const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
         
         setIsLoading(true);
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        cartCtx.addItem(addedItem);
+        cartCtx.addItemQty(addedItem);
         setIsLoading(false);
     };
 

@@ -2,28 +2,26 @@ import Link from 'next/link';
 import CartIMage from "./cartimage/cartimage";
 
 const CartItemStatus = (
-      {title, price, isbn, amount, slug, removeItem } : 
+      {title, price, isbn, amount, slug, removeAll } : 
       {
           isbn: string,
           slug: string,
           price: number;
           title: string, 
           amount: number,
-          removeItem: () => void
+          removeAll: () => void,
       }) => {
   const intPrice = `$${price.toFixed(2)}`;
 
   return (
     <li className="flex flex-row flex-wrap pb-[10px]">
           <div className="mr-auto w-[65px] h-[50px]">
-            <Link href={slug}>
-              <CartIMage isbn={isbn} imgSize='object-fill'/>
-            </Link>
+            <CartIMage isbn={isbn} imgSize='object-fill'/>
           </div>
           <div className="ml-auto flex-col flex-wrap w-[calc(100%-80px)]">
-            <div className="flex flex-row flex-wrap items-start">
+            <div className="flex flex-row flex-wrap items-start gap-2">
               <h4 className="mr-auto text-[20px]">{title}</h4>
-              <button className="ml-auto" onClick={removeItem}><span className="text-">x</span></button>
+              <button className="ml-auto w-[20px] h-[20px] text-white bg-[#260448] leading-[20px]" onClick={removeAll}><span className="text-[16px]">&#120;</span></button>
             </div>
             <div className="flex flex-row flex-wrap">
                 <span className="mr-auto">Quantity: {amount}</span>
