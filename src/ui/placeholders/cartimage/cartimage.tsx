@@ -3,7 +3,7 @@
 
 import { FC, memo, useEffect, useState } from "react";
 import Image from 'next/image';
-import classes from '@/components/frontend/cart/cartimage/cartimage.module.css';
+import classes from './cartimage.module.css';
 import BookImageLoader from '@/ui/placeholders/book-image-loader/book-image-loader';
 import { typeImagePath, typeImageTitle } from '@/types/frontend/books';
 import fetchBooksImage from '@/libs/frontend/fetchBookImage';
