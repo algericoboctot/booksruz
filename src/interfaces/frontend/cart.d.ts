@@ -11,7 +11,7 @@ export interface ICartState {
     totalAmount: number;
 }
 
-interface ICartContextType {
+export interface ICartContextType {
     items: ICartItem[];
     totalAmount: number;
     addItemQty: (item: ICartItem) => void;
@@ -19,4 +19,11 @@ interface ICartContextType {
     removeOne: (id: string) => void;
     removeAll: (id: string) => void;
     clearCart: () => void;
+}
+
+export interface ICartAddRemoveItem extends ICartItem {
+    itemTotalAmount?: number;
+    removeAll?: () => void;
+    removeOne?: () => void;
+    addOne?: () => void;
 }

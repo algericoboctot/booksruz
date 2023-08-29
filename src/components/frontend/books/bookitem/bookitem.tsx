@@ -1,18 +1,25 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IItem } from "@/interfaces/frontend/books";
 import BookImage from "@/components/frontend/books/bookimage/bookimage";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams  } from 'next/navigation';
 
 
 const BookItem = ( { title, author, isbn, slug } : IItem ) => {
-    const [featuredItem, setFeatuedItem ] = useState();
+    const [path, setPath ] = useState<string>();
     const pathname = usePathname();
+
+    useEffect(() => {
+        if ( pathname ) {
+            setPath(`/books/${slug}`);
+        } 
+    }, [path]);
+
     return(
         <>
             <div className="w-full sm:w-1/2 sm:flex-[0_0_50%] lg:flex-[0_0_33.33%] lg:w-1/3 xl:flex-[0_0_25%] xl:w-1/4 mb-[40px] lg:mb-[67px] xl:mb-[107px] sm:px-4">
-                <Link href={`books/${slug}`} title={title}>
+                <Link href={`${path}`} title={title}>
                     <div className='w-full h-[579px] sm:h-[479px] relative mb-[19px]'>
                         <BookImage isbn={isbn} imgSize='object-cover' />
                     </div>

@@ -23,10 +23,6 @@ const CartStatus = () => {
         setIsLoading(false);
     };
 
-    const cartAddOneHandlder = (item: ICartItem) => {
-        cartCtx.addOne(item)
-    }
-
     const mouseLeaveHandler = () => {
         setHover(false);
     }
@@ -53,11 +49,7 @@ const CartStatus = () => {
                                 {cartCtx.items.map((item) => (
                                     <CartItemStatus
                                         key={item.id}
-                                        title={item.title}
-                                        slug={item.slug}
-                                        amount={item.amount}
-                                        isbn={item.isbn}
-                                        price={item.price}
+                                        {...item}
                                         removeAll={cartItemRemoveAllHandler.bind(null, item.id)}
                                     />
                                 ))}

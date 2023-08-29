@@ -1,4 +1,4 @@
-import CartPageComponent from "@/components/frontend/cartpage/cart";
+import CartPageComponent from "@/app/(frontend)/my-cart/cart/cart";
 
 const MyCartPage = () => {
     return(

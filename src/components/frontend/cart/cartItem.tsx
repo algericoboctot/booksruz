@@ -1,26 +1,35 @@
 import Link from 'next/link';
-import CartIMage from "./cartimage/cartimage";
+import CartImage from "@/ui/placeholders/cartimage/cartimage";
+import { FC, useEffect, useState } from 'react';
+import { ICartAddRemoveItem } from '@/interfaces/frontend/cart';
+import { usePathname } from 'next/navigation';
 
-const CartItemStatus = (
-      {title, price, isbn, amount, slug, removeAll } : 
-      {
-          isbn: string,
-          slug: string,
-          price: number;
-          title: string, 
-          amount: number,
-          removeAll: () => void,
-      }) => {
+const CartItemStatus:FC<ICartAddRemoveItem> = (props) => {
+
+  const {title, price, isbn, amount, slug, removeAll } = props;
+
+  const [path, setPath ] = useState<string>();
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+      if ( pathname ) {
+          setPath(`/books/${slug}`);
+      }
+  }, [path]);
+
   const intPrice = `$${price.toFixed(2)}`;
 
   return (
     <li className="flex flex-row flex-wrap pb-[10px]">
-          <div className="mr-auto w-[65px] h-[50px]">
-            <CartIMage isbn={isbn} imgSize='object-fill'/>
+          <div className="mr-auto w-[65px] h-[80px]">
+            <Link href={`${path}`}>
+              <CartImage isbn={isbn} imgSize='object-fill'/>
+            </Link>
           </div>
           <div className="ml-auto flex-col flex-wrap w-[calc(100%-80px)]">
             <div className="flex flex-row flex-wrap items-start gap-2">
-              <h4 className="mr-auto text-[20px]">{title}</h4>
+              <h4 className="mr-auto text-[20px]"><Link href={`${path}`}>{title}</Link></h4>
               <button className="ml-auto w-[20px] h-[20px] text-white bg-[#260448] leading-[20px]" onClick={removeAll}><span className="text-[16px]">&#120;</span></button>
             </div>
             <div className="flex flex-row flex-wrap">

@@ -9,7 +9,7 @@ import { typeImagePath, typeImageTitle } from '@/types/frontend/books';
 import fetchBooksImage from '@/libs/frontend/fetchBookImage';
 import BookIcon from "@/icons/book";
 
-const CartIMage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize}) => {
+const CartImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize}) => {
   
       const [imagePath, setImagePath] = useState<string | null>(null);
       const [imageTitle, setImageTitle] = useState<string | null>(null);
@@ -56,4 +56,4 @@ const CartIMage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
       );
 });
 
-export default CartIMage;
+export default CartImage;
