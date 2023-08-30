@@ -5,7 +5,7 @@ import { TypeCartAction } from "@/types/frontend/cart";
 
 const defaultCartState: ICartState = {
   items: [],
-  totalAmount: 0,
+  totalAmount: 0
 };
 
 const cartReducer = (state: ICartState, action: TypeCartAction) => {
@@ -32,6 +32,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
         const updatedItem = {
           ...existingCartItem,
           amount: existingCartItem.amount + action.item.amount,
+          itemTotalPrice: existingCartItem.price * action.item.amount
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
@@ -41,7 +42,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
 
       return {
         items: updatedItems,
-        totalAmount: updatedTotalAmount,
+        totalAmount: updatedTotalAmount
       };
     case "ADD_ONE": 
       updatedTotalAmount = state.totalAmount + action.item.price;
@@ -56,6 +57,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
         const updatedItem = {
           ...existingCartItem,
           amount: existingCartItem.amount + 1,
+          itemTotalPrice: (existingCartItem.price * existingCartItem.amount) + existingCartItem.price
         };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
@@ -81,7 +83,11 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       if (existingItem.amount === 1) {
         updatedItems = state.items.filter((item:ICartItem) => item.id !== action.id);
       } else {
-        updatedItem = {...existingItem, amount: existingItem.amount - 1};
+        updatedItem = {
+          ...existingItem, 
+          amount: existingItem.amount - 1,
+          itemTotalPrice: (existingItem.price * existingItem.amount) - existingItem.price
+        };
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
       }

@@ -5,6 +5,7 @@ export interface ICartItem {
     title: string;
     price: number;
     amount: number;
+    itemTotalPrice: number;
 }
 export interface ICartState {
     items: ICartItem[];

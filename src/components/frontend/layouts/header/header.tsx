@@ -48,7 +48,7 @@ const MainHeader = () => {
                         <div className={`${classes['main-navigation']} ${mobileMenu ? classes.open : classes.hidden} md:mx-auto w-full md:w-auto md:visible md:flex xl:px-0`}>
                             <MainNavigation />
                         </div>
-                        <div className='md:ml-auto flex flex-row flex-wrap items-center gap-3 relative'>
+                        <div className='md:ml-auto flex flex-row flex-wrap items-center gap-3 relative mb-4'>
                             <CartStatus />
                             <Wishlists />
                         </div>

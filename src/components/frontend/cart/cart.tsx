@@ -40,7 +40,7 @@ const CartStatus = () => {
                 )}
             </div>
             {hover && (
-                <div onMouseEnter={mouseInHandler} onMouseLeave={mouseLeaveHandler} className='absolute w-[450px] pt-6 top-[20px] right-0'>
+                <div onMouseEnter={mouseInHandler} onMouseLeave={mouseLeaveHandler} className='absolute w-[400px] xl:w-[420px] pt-6 top-[20px] translate-x-[-45%] md:translate-x-0 ml-[45%] md:ml-0 md:right-0'>
                     <div className='bg-white border-[#5c5b5b] border-[1px] rounded-md w-full p-5'>
                         <h4 className='mb-4 text-[20px] font-medium border-[#e0dfdf] border-b-[1px]'>Your current items in cart</h4>
                         { (items > 0 ) ? (

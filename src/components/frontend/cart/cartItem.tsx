@@ -22,7 +22,7 @@ const CartItemStatus:FC<ICartAddRemoveItem> = (props) => {
 
   return (
     <li className="flex flex-row flex-wrap pb-[10px]">
-          <div className="mr-auto w-[65px] h-[80px]">
+          <div className="mr-auto w-[65px] h-[80px] border-[#260448] border-[1px]">
             <Link href={`${path}`}>
               <CartImage isbn={isbn} imgSize='object-fill'/>
             </Link>

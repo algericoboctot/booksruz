@@ -10,7 +10,6 @@ const Wishlists = () => {
     return(
         <>
             <div className='relative'>
-                
                 {(items > 0) ? (<>
                     <Link className="relative" href="/wishlist">
                         <HeartIcon width="28px" height="24px" border="#FB5F5F" background="transparent" />

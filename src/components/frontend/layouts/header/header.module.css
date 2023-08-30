@@ -9,7 +9,8 @@
 }
 
 .main-navigation.open {
-    height: 132px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .main-navigation nav {

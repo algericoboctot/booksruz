@@ -21,7 +21,8 @@ const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
             isbn: isbn,
             title: title,
             amount: amount,
-            price: price
+            price: price,
+            itemTotalPrice: amount * price
         }
         
         setIsLoading(true);
