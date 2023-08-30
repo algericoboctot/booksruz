@@ -1,11 +1,11 @@
 export interface ICartItem {
     id: string;
-    slug: string;
+    slug?: string;
     isbn: string;
     title: string;
     price: number;
     amount: number;
-    itemTotalPrice: number;
+    itemTotalPrice?: number;
 }
 export interface ICartState {
     items: ICartItem[];
@@ -29,4 +29,12 @@ export interface ICartAddRemoveItem extends ICartItem {
     removeAll?: () => void;
     removeOne?: () => void;
     addOne?: () => void;
+}
+
+export interface ICartWishList {
+    id: string;
+    title: string;
+    isbn: string;
+    price: number;
+
 }
