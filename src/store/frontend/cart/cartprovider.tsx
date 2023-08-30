@@ -5,7 +5,8 @@ import { TypeCartAction } from "@/types/frontend/cart";
 
 const defaultCartState: ICartState = {
   items: [],
-  totalAmount: 0
+  totalAmount: 0,
+  totalQty: 0
 };
 
 const cartReducer = (state: ICartState, action: TypeCartAction) => {
@@ -16,11 +17,13 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       updateItemTotalAmout,
       existingItem,
       updatedItem,
+      updatedTotalQty,
       updatedItems;
 
   switch(action.type) {
     case 'ADD_QTY':
       updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+      updatedTotalQty = state.totalQty + action.item.amount;
 
       existingCartItemIndex = state.items.findIndex(
         (item: ICartItem) => item.id === action.item.id
@@ -42,17 +45,19 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
 
       return {
         items: updatedItems,
-        totalAmount: updatedTotalAmount
+        totalAmount: updatedTotalAmount,
+        totalQty: updatedTotalQty
       };
     case "ADD_ONE": 
       updatedTotalAmount = state.totalAmount + action.item.price;
+      
 
       existingCartItemIndex = state.items.findIndex(
         (item: ICartItem) => item.id === action.item.id
       );
 
       existingCartItem = state.items[existingCartItemIndex];
-
+      updatedTotalQty = state.totalQty + 1;
       if (existingCartItem) {
         const updatedItem = {
           ...existingCartItem,
@@ -68,6 +73,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       return {
         items: updatedItems,
         totalAmount: updatedTotalAmount,
+        totalQty: updatedTotalQty
       };
     case "REMOVE_ONE":
       existingCartItemIndex = state.items.findIndex(
@@ -77,8 +83,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       existingItem = state.items[existingCartItemIndex];
     
       updatedTotalAmount = state.totalAmount - existingItem.price;
-
-      console.log(updateItemTotalAmout);
+      updatedTotalQty = state.totalQty - 1;
     
       if (existingItem.amount === 1) {
         updatedItems = state.items.filter((item:ICartItem) => item.id !== action.id);
@@ -94,7 +99,8 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
 
       return {
         items: updatedItems,
-        totalAmount: updatedTotalAmount
+        totalAmount: updatedTotalAmount,
+        totalQty: updatedTotalQty
       };
     case "REMOVE_ALL":
       existingCartItemIndex = state.items.findIndex(
@@ -104,6 +110,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       existingItem = state.items[existingCartItemIndex];
     
       updatedTotalAmount = state.totalAmount - (existingItem.amount * existingItem.price);
+      updatedTotalQty = state.totalQty - existingItem.amount;
 
       if (existingItem.amount >= 0) {
         updatedItems = state.items.filter((item:ICartItem) => item.id !== action.id);
@@ -114,7 +121,8 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       }
       return {
         items: updatedItems,
-        totalAmount: updatedTotalAmount
+        totalAmount: updatedTotalAmount,
+        totalQty: updatedTotalQty
       };
       
     case "CLEAR":
@@ -157,6 +165,7 @@ const CartProvider = ({
   const cartContext: ICartContextType = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
+    totalQty: cartState.totalQty,
     addItemQty: addItemQtyToCartHandler,
     addOne: addItemOneCartHandler,
     removeOne: removeItemOneFromCartHandler,

@@ -10,11 +10,13 @@ export interface ICartItem {
 export interface ICartState {
     items: ICartItem[];
     totalAmount: number;
+    totalQty: number;
 }
 
 export interface ICartContextType {
     items: ICartItem[];
     totalAmount: number;
+    totalQty: number;
     addItemQty: (item: ICartItem) => void;
     addOne: (item:ICartItem) => void;
     removeOne: (id: string) => void;

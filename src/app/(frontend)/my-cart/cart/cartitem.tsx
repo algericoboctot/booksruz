@@ -34,7 +34,7 @@ const CartPageComponentItem: FC<ICartAddRemoveItem> = (props) => {
                     </div>
                     <div>
                         <h4 className="font-bold"><Link href={`${path}`}>{title}</Link></h4>
-                        <p>Product Code: {id}</p>
+                        <p>Product Code: {isbn}</p>
                     </div>
                     <div className="ml-auto flex flex-row flex-wrap">
                         <p className='mr-[20px]'>Qty: {amount}</p>
