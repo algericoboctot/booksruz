@@ -208,7 +208,7 @@ const Search = () => {
                                         disabled={isLoadingMore} 
                                         type="button"
                                     >
-                                        {isLoadingMore ? 'loading...' : 'Load more'}
+                                        { isLoadingMore ? 'loading...' : 'Load more' }
                                     </button>
                                 }
                             </div>
