@@ -1,12 +1,12 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IItem } from "@/interfaces/frontend/books";
 import BookImage from "@/components/frontend/books/bookimage/bookimage";
 import { usePathname, useRouter, useSearchParams  } from 'next/navigation';
 
 
-const BookItem = ( { title, author, isbn, slug } : IItem ) => {
+const BookItem: FC<IItem> = ( { title, author, isbn, slug } ) => {
     const [path, setPath ] = useState<string>();
     const pathname = usePathname();
 

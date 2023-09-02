@@ -6,7 +6,6 @@ import { useContext, useState } from "react";
 const Wishlists = () => {
     const wishCtx = useContext(WishContext);
     const items = wishCtx.totalWished;
-
     return(
         <>
             <div className='relative'>

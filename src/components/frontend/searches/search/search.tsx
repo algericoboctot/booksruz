@@ -4,17 +4,26 @@ import debounce from 'lodash.debounce';
 import { useRouter } from "next/navigation";
 import useQueryBooks from "@/libs/frontend/useQueryBooks";
 import Link from "next/link";
+import useDebounce from "@/libs/frontend/useDebounce";
+import { RESULT_SIZE } from "@/types/frontend/books";
 
-const RESULT_SIZE = 5;
+const RESULT_SIZE: RESULT_SIZE = 10;
 const Search = () => {
     const { isLoading, data } = useQueryBooks();
 
     //useState Hooks
     const [searchTerm, setSearchTerm] = useState<string>("");
+    const debouncedSearchTerm = useDebounce(searchTerm, 500);
     const [searchActive, setSearchActive] = useState<boolean>(false);
     const [noResultsFound, setNoResultsFound] = useState<boolean>(false);
     const [totalBooks, setTotalBooks] = useState<number>(0);
     const [searchResults, setSearchResults] = useState<string[]>([]);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const [visibleResults, setVisibleResults] = useState<number>(RESULT_SIZE);
+    const [totalResults, setTotalResults] = useState<number>(0);
+    const [allResultsLoaded, setAllResultsLoaded] = useState(false);
+    const [showAllResultsLoadedMessage, setShowAllResultsLoadedMessage] = useState(false);
+
     
     const router = useRouter();
 
@@ -31,10 +40,9 @@ const Search = () => {
         setNoResultsFound(false);
     };
 
-    //Handle the debouncing of data while typing on search input
-    const handleSearchDebounced = debounce((term: string) => {
-        handleSearch(term);
-    }, 500);
+    useEffect(() => {
+        handleSearch(debouncedSearchTerm);
+    }, [debouncedSearchTerm]);
 
     useEffect(() => {
         setNoResultsFound(searchActive);
@@ -49,20 +57,14 @@ const Search = () => {
     }, [searchActive, noResultsFound, filteredBooks, data]);
 
     const handleInputChange = async (event: ChangeEvent<HTMLInputElement>) => {
-        await handleSearchDebounced(event.target.value);
         await setSearchTerm(event.target.value);
     };
 
-    const handleSearchFocus = () => {
-        setSearchActive(true);
+    const handleSearchFocus = (event: ChangeEvent<HTMLInputElement>) => {
+        const inputVal = event.target.value;
+        setSearchActive(inputVal.trim() !== "");
     };
-    
-    const handleSearchBlur = () => {
-        setTimeout(() => {
-            setSearchActive(false);
-        }, 500); 
-    };
-    
+
     const submitSearch = (event: FormEvent) => {
         event.preventDefault();
         handleSearch(searchTerm);
@@ -72,7 +74,46 @@ const Search = () => {
             router.replace(`/search?q=${encodedSearchTerm}`);
             setSearchResults([]);
         }
-    }
+    };
+    
+    const handleLoadMore = () => {
+        if (visibleResults >= totalResults) {
+            setAllResultsLoaded(true);
+
+            setShowAllResultsLoadedMessage(true);
+            setTimeout(() => {
+            setShowAllResultsLoadedMessage(false);
+            }, 1500);
+
+        } else {
+            setIsLoadingMore(true);
+
+            // Add a delay of 1000 milliseconds (adjust as needed)
+            setTimeout(() => {
+              const newVisibleResults = Math.min(
+                visibleResults + RESULT_SIZE,
+                totalResults
+              );
+              setVisibleResults(newVisibleResults);
+              setIsLoadingMore(false);
+
+            }, 1000); // Adjust the delay duration (in milliseconds) as needed
+        }
+    };
+
+    const handleClearSearch = () => {
+        // Reset the visible results to the initial value
+        setTimeout(() => {
+            setSearchActive(false);
+            setSearchTerm("");
+            setAllResultsLoaded(false); // Reset the allResultsLoaded state
+            setVisibleResults(RESULT_SIZE);
+        }, 300); 
+    };
+
+    useEffect(() => {
+        setTotalResults(filteredBooks?.length || 0);
+    }, [filteredBooks]);
 
     return(
         <>
@@ -111,8 +152,9 @@ const Search = () => {
                                 type="text"
                                 placeholder="Book Title"
                                 onChange={handleInputChange}
-                                onBlur={handleSearchBlur}
-                                />
+                                onFocus={handleSearchFocus}
+                                value={searchTerm}
+                            />
                         </div>
                         <button className="
                                 absolute 
@@ -135,13 +177,43 @@ const Search = () => {
                                 leading-[150%] border-[3px] border-[#06C]" 
                                 type="submit">Search</button>
                     </form>
-                    {(searchActive || filteredBooks?.length > 0) && 
-                        <div className="absolute left-0 bg-white w-full p-[20px] h-auto">
-                            <ul>
-                            {(searchActive && !noResultsFound) && filteredBooks.map((item: any) => (<li key={item.id}><Link href={`books/`+item.slug} className="block">{item.title}</Link></li>))}
-                            </ul>
-                        </div>
-                    }
+                    {(searchActive || filteredBooks?.length >= 0) && ((searchActive && !noResultsFound) && 
+                        (
+                            <div className="absolute left-0 bg-white w-full p-[20px] h-auto"> 
+                                <ul className="mb-4">
+                                    {(searchActive && !noResultsFound) && (
+                                        filteredBooks.slice(0, visibleResults).map((item: any) => (
+                                            <li key={item.id}>
+                                            <Link href={`books/` + item.slug} className="block">
+                                                {item.title}
+                                            </Link>
+                                            </li>
+                                        )))
+                                    }
+                                </ul>
+                                {allResultsLoaded ? 
+                                    <div>
+                                        {showAllResultsLoadedMessage ?
+                                            <p>
+                                                All results loaded
+                                            </p>
+                                        : 
+                                            <button onClick={handleClearSearch} type="button" className="text-[#0A63F9]">Clear results</button>
+                                        }
+                                    </div> 
+                                : 
+                                    ((totalResults >= RESULT_SIZE) && (!allResultsLoaded)) && 
+                                    <button 
+                                        onClick={handleLoadMore} 
+                                        disabled={isLoadingMore} 
+                                        type="button"
+                                    >
+                                        {isLoadingMore ? 'loading...' : 'Load more'}
+                                    </button>
+                                }
+                            </div>
+                        )
+                    )}
                 </div>
 
             </div>

@@ -4,7 +4,7 @@ import classes from '@/components/frontend/addwish/wishlist.module.css';
 import WishContext from '@/store/frontend/wishlist/wishcontext';
 import { IWishItem } from '@/interfaces/frontend/wish';
 
-const AddWish: FC<IWishItem> = ({id, isbn, title, slug, author}) => {
+const AddWishPage: FC<IWishItem> = ({id, isbn, title, slug, author}) => {
     const wishCtx = useContext(WishContext);
     const wishItem = wishCtx.items.find(( item: IWishItem ) => item.id === id);
     const border = wishItem?.colors.border || "#000000";
@@ -38,24 +38,36 @@ const AddWish: FC<IWishItem> = ({id, isbn, title, slug, author}) => {
 
     return(
         <>
-            <button
-                style={{border: `3px solid ${btnBorder}`}}
-                className={`
-                    ${classes['wishlist-btn']}
-                    bg-[#F2F3FB] 
-                    rounded-[8px] 
-                    border-[#F2F3FB] 
-                    border-[3px] 
-                    text-[14px] 
-                    leading-[28px] 
-                    text-black 
-                    w-[150px] 
-                    h-[50px] 
-                    hover:ease-in
-                    duration-300 flex flex-wrap flex-row items-center justify-center gap-6`}
-                type="button" onClick={clickHandler} disabled={isLoading}><HeartIcon width="22px" height="20px" border={border} background={background} />Wishlist</button>
+            <div className='absolute right-[25px] top-[10px] z-10'>
+                <button
+                    style={{border: `3px solid ${btnBorder}`}}
+                    className={`
+                        ${classes['wishlist-btn']}
+                        bg-[#F2F3FB]  
+                        border-[#F2F3FB] 
+                        border-[3px] 
+                        text-[14px] 
+                        leading-[28px] 
+                        text-black 
+                        w-[50px] 
+                        h-[50px]
+                        rounded-full
+                        hover:ease-in
+                        duration-300 
+                        flex 
+                        flex-wrap 
+                        flex-row 
+                        items-center 
+                        justify-center 
+                        gap-6`}
+                    type="button" 
+                    onClick={clickHandler} 
+                    disabled={isLoading}>
+                        <HeartIcon width="22px" height="20px" border={border} background={background} />
+                </button>
+            </div>
         </>
     );
 }
 
-export default AddWish;
+export default AddWishPage;

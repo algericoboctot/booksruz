@@ -2,9 +2,9 @@ export interface IWishItem {
     id: string;
     isbn: string;
     title: string;
-    price: number;
+    slug: string;
+    author: string;
     isWished: boolean;
-    amount?: number;
     colors: {
         border: string;
         background: string;

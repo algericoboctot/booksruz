@@ -11,10 +11,11 @@ import AddWish from '@/components/frontend/addwish/wishlist';
 
 const BookDetail: FC<IItemDetails> = (props) => {
     const cartCtxt = useContext(CartContext);
-
-    const cartItemAddHandler = (item: ICartItem) => {
-        cartCtxt.addItem(item);
-    };
+    const colorWished = {
+        border: "#FB5F5F",
+        background: "transparent",
+        btnBorder: "#EBECF1"
+    }
 
     const [colors, setColors] = useState<string[]>([
         '#FF1493',
@@ -82,6 +83,10 @@ const BookDetail: FC<IItemDetails> = (props) => {
                                 id={props.id} 
                                 title={props.title}
                                 isbn={props.isbn}
+                                slug={props.slug}
+                                author={props.author}
+                                isWished={true}
+                                colors={colorWished}
                             />
                         </div>
                     </div>
