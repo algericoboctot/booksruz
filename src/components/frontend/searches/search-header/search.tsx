@@ -187,7 +187,7 @@ const SearchHeader = () => {
                                             {(searchActive && !noResultsFound) && (
                                                 filteredBooks.slice(0, visibleResults).map((item: any) => (
                                                     <li key={item.id}>
-                                                    <Link href={`books/` + item.slug} className="block">
+                                                    <Link href={`/books/` + item.slug} className="block">
                                                         {item.title}
                                                     </Link>
                                                     </li>
