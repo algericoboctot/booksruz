@@ -5,6 +5,7 @@ import { createContext } from 'react';
 const CartContextValue: ICartContextType = {
     items: [],
     totalAmount: 0,
+    totalQty: 0,
     addItemQty: (item: ICartItem) => {},
     addOne: (item: ICartItem) => {},
     removeOne: (id: string) => {},

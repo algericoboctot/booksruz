@@ -56,4 +56,6 @@ const CartImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
       );
 });
 
+CartImage.displayName = 'CartImage';
+
 export default CartImage;

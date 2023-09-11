@@ -1,6 +1,6 @@
 import { ICartItem } from "@/interfaces/frontend/cart";
 import CartContext from "@/store/frontend/cart/cartcontext";
-import { FC, FormEventHandler, useContext, useState} from "react";
+import { FC, FormEventHandler, useContext, useEffect, useState} from "react";
 
 const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
     const cartCtx = useContext(CartContext);
@@ -29,6 +29,9 @@ const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         cartCtx.addItemQty(addedItem);
         setIsLoading(false);
+
+         // Store updated cart data in session storage
+        sessionStorage.setItem('cart', JSON.stringify(cartCtx.addItemQty(addedItem)));
     };
 
     const submitHandler: FormEventHandler<HTMLFormElement> = async (e) => {
@@ -50,7 +53,7 @@ const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
             <div className="mb-4 flex flex-row flex-wrap items-center gap-3">
                 <div>
                     <label htmlFor="qty">Qty: </label>
-                    <input id="qty" style={{borderColor: borderClr}} className={`w-[58px] h-[50px] border-2 rounded-[8px] p-2`} type="number" min="0" max="40" autoComplete="off" onChange={inputChangeHandler} value={qty} />
+                    <input id="qty" style={{borderColor: borderClr}} className={`w-[58px] h-[50px] border-2 rounded-[8px] p-2 text-center`} type="number" min="0" max="40" autoComplete="off" onChange={inputChangeHandler} value={qty} />
                 </div>
                 <button style={{backgroundColor: `${isLoading ? '#cacccf' : '#1A2134'}`, borderColor: `${isLoading ? '#cacccf' : '#1A2134'}`}} className="
                         rounded-[8px] 

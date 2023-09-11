@@ -56,4 +56,6 @@ const BookImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
       );
 });
 
+BookImage.displayName = 'BookImage';
+
 export default BookImage;
