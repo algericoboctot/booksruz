@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react";
-import classes from '@/components/frontend/sorting/sorting.module.css';
+import classes from './sorting.module.css';
 
 const Sorting = ({sortHandler, sortedValue } : {sortHandler: any, sortedValue: string}) => {
 

@@ -155,7 +155,13 @@ const CartProvider = ({
 
   // Save cart data to session storage whenever it changes
   useEffect(() => {
+    // Save cart data to session storage whenever it changes
     sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartState));
+
+    // Clear session storage if the cart is empty
+    if (cartState.items.length === 0) {
+      sessionStorage.removeItem(CART_STORAGE_KEY);
+    }
   }, [cartState]); 
 
   const addItemQtyToCartHandler = async (item: ICartItem) => {

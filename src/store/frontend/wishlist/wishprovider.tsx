@@ -77,6 +77,11 @@ const WishProvider = ({ children } : {children: ReactNode} ) => {
     // Save cart data to session storage whenever it changes
     useEffect(() => {
         sessionStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishState));
+
+         // Clear session storage if the cart is empty
+        if (wishState.items.length === 0) {
+            sessionStorage.removeItem(WISHLIST_STORAGE_KEY);
+        }
     }, [wishState]); 
 
     const addWishHandler = (item: IWishItem) => {
