@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactNode, useState } from 'react';
 import '@/app/globals.css';
 import { Roboto } from 'next/font/google'
