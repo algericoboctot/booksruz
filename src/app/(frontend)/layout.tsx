@@ -14,11 +14,6 @@ const roboto = Roboto({
   display: 'swap',
 });
 
-export const metadata = {
-  title: 'Bookzrus',
-  description: 'Your online books for free',
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -28,10 +23,6 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        <title>Title</title>
-        <meta name='description' content='Description' />
-      </head>
       <body className={classList.join(' ')}>
         <main className='relative'>
           <CartProvider>

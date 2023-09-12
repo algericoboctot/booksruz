@@ -3,6 +3,10 @@ import Banner from '@/components/frontend/layouts/banner/banner';
 import fetchBooks from '@/libs/frontend/fetchBooks';
 import Newsletter from '@/components/frontend/newsletter/newsletter';
 
+export const metadata = {
+  title: 'Bookzrus',
+  description: 'Your online books for free',
+}
 
 const Home = async () => {
   const data = await fetchBooks();
