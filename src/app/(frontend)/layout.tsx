@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode, useState } from 'react';
 import '@/app/globals.css';
 import { Roboto } from 'next/font/google'
@@ -26,6 +28,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>Title</title>
+        <meta name='description' content='Description' />
+      </head>
       <body className={classList.join(' ')}>
         <main className='relative'>
           <CartProvider>
