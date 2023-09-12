@@ -14,7 +14,7 @@ const Home = async () => {
     <>
       <Banner />
         <div className='container px-4 2xl:px-0 py-[37px] md:py-[47px] 2xl:py-[77px]'>
-          <FeaturedBooksList data={data}/>
+           <FeaturedBooksList data={data}/>
         </div>
       <Newsletter />
     </>
