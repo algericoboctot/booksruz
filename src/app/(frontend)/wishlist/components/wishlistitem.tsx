@@ -1,4 +1,4 @@
-import BookImage from "@/components/frontend/books/bookimage/bookimage";
+import BookImage from "@/app/(frontend)/books/[book]/components/bookimage/bookimage";
 import { IWishItem } from "@/interfaces/frontend/wish";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

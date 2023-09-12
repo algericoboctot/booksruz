@@ -1,6 +1,6 @@
 "use client";
 import { IItem } from "@/interfaces/frontend/books";
-import BookItem from "@/components/frontend/books/bookitem/bookitem";
+import BookItem from "@/app/(frontend)/books/[book]/components/bookitem/bookitem";
 import BookItemLoader from "@/ui/placeholders/bookitem-loader/bookitemloader";
 const BooksLists = ( 
         {bookData, nextPage, sortLoading} : 

@@ -3,7 +3,6 @@ import { useState, useContext } from 'react';
 import CartIcon from "@/icons/cart";
 import CartContext from '@/store/frontend/cart/cartcontext';
 import CartItemStatus from '@/components/frontend/cart/cartItem';
-import { ICartItem } from '@/interfaces/frontend/cart';
 
 const CartStatus = () => {
     const cartCtx = useContext(CartContext);

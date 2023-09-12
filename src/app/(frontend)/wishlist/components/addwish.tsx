@@ -1,6 +1,6 @@
 import { FC, useContext, useEffect, useState } from 'react';
 import HeartIcon from '@/icons/heart';
-import classes from '@/components/frontend/addwish/wishlist.module.css';
+import classes from './wishlist.module.css';
 import WishContext from '@/store/frontend/wishlist/wishcontext';
 import { IWishItem } from '@/interfaces/frontend/wish';
 

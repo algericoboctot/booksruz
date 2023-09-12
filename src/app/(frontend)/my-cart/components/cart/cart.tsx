@@ -45,7 +45,7 @@ const CartPageComponent = () => {
                                 (cartItems.length > 0) 
                                     ?<>
                                     <div className="basis-full mx-auto md:basis-10/12 lg:basis-8/12 lg:mx-0 lg:pr-5 mb-5 lg:mb-0">
-                                        <div className={` ${classes['cart-bg']} text-white p-4 rounded-xl`}>
+                                        <div className={` ${classes['cart-bg']} text-white p-4 rounded-xl h-full`}>
                                             {cartItems.map(item => (
                                                 <CartPageComponentItem 
                                                     key={item.id} 

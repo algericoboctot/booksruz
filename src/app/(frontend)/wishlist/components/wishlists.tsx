@@ -7,8 +7,7 @@ import WishListItem from "./wishlistitem";
 const WishListsListing =() => {
     const wishCtx = useContext(WishContext);
     const wishItems = wishCtx.items;
-
-    console.log(wishCtx);
+    
     return(
         <>
             <div className={`flex flex-col sm:flex-row sm:flex-wrap sm:mx-[-16px] px-4 sm:px-0 2xl:px-0`}>

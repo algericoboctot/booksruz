@@ -8,8 +8,8 @@ import fetchBooks from "@/libs/frontend/fetchBooks";
 import { Genres } from '@/types/frontend/books';
 
 import Banner from "@/components/frontend/layouts/banner/banner";
-import BooksLists from "@/components/frontend/books/booklists/booklists";
-import Sorting from "@/components/frontend/sorting/sorting";
+import BooksLists from "@/app/(frontend)/books/components/booklists/booklists";
+import Sorting from "@/app/(frontend)/genres/components/sorting/sorting";
 import BookListLoader from "@/ui/placeholders/booklist-loader/booklistplaceholder";
 import Newsletter from "@/components/frontend/newsletter/newsletter";
 

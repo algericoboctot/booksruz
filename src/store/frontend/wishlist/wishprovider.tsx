@@ -1,4 +1,4 @@
-import { useReducer, ReactNode, FC } from "react";
+import { useReducer, ReactNode, FC, useEffect } from "react";
 import WishContext from "@/store/frontend/wishlist/wishcontext";
 import { TypeWishAction } from "@/types/frontend/wish";
 import { IWishState, IWishItem, IWishContextType } from "@/interfaces/frontend/wish";
@@ -14,11 +14,14 @@ const defaultWishState: IWishState = {
     },
 };
 
+const WISHLIST_STORAGE_KEY = 'wishlist';
+
 const wishReducer = (state: IWishState, action: TypeWishAction): IWishState => {
     switch (action.type) {
+        case 'REPLACE':
+            return action.item; 
         case 'TOGGLE':
             const itemExists = state.items.some(item => item.id === action.item.id);
-            
             if (!itemExists) {
                 const newItem: IWishItem = {
                     ...action.item,
@@ -62,6 +65,19 @@ const wishReducer = (state: IWishState, action: TypeWishAction): IWishState => {
 // Context provider component
 const WishProvider = ({ children } : {children: ReactNode} ) => {
     const [wishState, wishDispatch] = useReducer(wishReducer, defaultWishState);
+
+    // Retrieve cart data from session storage when the component mounts
+    useEffect(() => {
+        const storeWishList = sessionStorage.getItem(WISHLIST_STORAGE_KEY);
+        if (storeWishList) {
+            wishDispatch({ type: 'REPLACE', item: JSON.parse(storeWishList) });
+        }
+    }, []);
+
+    // Save cart data to session storage whenever it changes
+    useEffect(() => {
+        sessionStorage.setItem(WISHLIST_STORAGE_KEY, JSON.stringify(wishState));
+    }, [wishState]); 
 
     const addWishHandler = (item: IWishItem) => {
         wishDispatch({ type: 'TOGGLE', item: item });

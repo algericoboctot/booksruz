@@ -14,8 +14,6 @@ const CartPageComponentItem: FC<ICartAddRemoveItem> = (props) => {
 
     const intItemTotalPrice = `$${itemTotalPrice?.toFixed(2)}`;
 
-    console.log(itemTotalPrice);
-
     useEffect(() => {
         if ( pathname.includes('/books') ) {
             setPath(`/${slug}`);

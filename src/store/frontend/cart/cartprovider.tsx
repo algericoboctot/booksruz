@@ -1,4 +1,4 @@
-import { useReducer, ReactNode } from "react";
+import { useReducer, ReactNode, useEffect } from "react";
 import CartContext from "./cartcontext";
 import { ICartItem, ICartState, ICartContextType } from "@/interfaces/frontend/cart";
 import { TypeCartAction } from "@/types/frontend/cart";
@@ -8,6 +8,8 @@ const defaultCartState: ICartState = {
   totalAmount: 0,
   totalQty: 0
 };
+
+const CART_STORAGE_KEY = 'cart';
 
 const cartReducer = (state: ICartState, action: TypeCartAction) => {
   
@@ -21,6 +23,8 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
       updatedItems;
 
   switch(action.type) {
+    case 'REPLACE':
+      return action.cart; 
     case 'ADD_QTY':
       updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
       updatedTotalQty = state.totalQty + action.item.amount;
@@ -124,7 +128,6 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
         totalAmount: updatedTotalAmount,
         totalQty: updatedTotalQty
       };
-      
     case "CLEAR":
       return defaultCartState;
     default:
@@ -141,6 +144,19 @@ const CartProvider = ({
     cartReducer,
     defaultCartState
   );
+
+  // Retrieve cart data from session storage when the component mounts
+  useEffect(() => {
+    const storedCart = sessionStorage.getItem(CART_STORAGE_KEY);
+    if (storedCart) {
+      dispatchCartAction({ type: 'REPLACE', cart: JSON.parse(storedCart) });
+    }
+  }, []);
+
+  // Save cart data to session storage whenever it changes
+  useEffect(() => {
+    sessionStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartState));
+  }, [cartState]); 
 
   const addItemQtyToCartHandler = async (item: ICartItem) => {
     dispatchCartAction({ type: 'ADD_QTY', item: item });

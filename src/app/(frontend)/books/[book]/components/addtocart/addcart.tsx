@@ -1,6 +1,6 @@
 import { ICartItem } from "@/interfaces/frontend/cart";
 import CartContext from "@/store/frontend/cart/cartcontext";
-import { FC, FormEventHandler, useContext, useEffect, useState} from "react";
+import { FC, FormEventHandler, useContext, useState} from "react";
 
 const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
     const cartCtx = useContext(CartContext);
@@ -29,9 +29,6 @@ const AddToCart: FC<ICartItem> = ({id, title, slug, price, isbn, amount}) => {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         cartCtx.addItemQty(addedItem);
         setIsLoading(false);
-
-         // Store updated cart data in session storage
-        sessionStorage.setItem('cart', JSON.stringify(cartCtx.addItemQty(addedItem)));
     };
 
     const submitHandler: FormEventHandler<HTMLFormElement> = async (e) => {

@@ -1,11 +1,9 @@
 'use client';
 
-import BookItem from "@/components/frontend/books/bookitem/bookitem";
-import BooksLists from "@/components/frontend/books/booklists/booklists";
-import Search from "@/components/frontend/searches/search/search";
+import BookItem from "@/app/(frontend)/books/[book]/components/bookitem/bookitem";
+import Search from "@/app/(frontend)/books/components/search/search";
 import { IItem } from "@/interfaces/frontend/books";
 import useQueryBooks from "@/libs/frontend/useQueryBooks";
-import BookItemLoader from "@/ui/placeholders/bookitem-loader/bookitemloader";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";

@@ -1,4 +1,4 @@
-import WishListsListing from "./wishlists/wishlists";
+import WishListsListing from "./components/wishlists";
 
 const WishlistPage = () => {
     return(

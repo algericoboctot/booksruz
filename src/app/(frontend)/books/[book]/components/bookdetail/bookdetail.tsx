@@ -2,12 +2,12 @@
 
 import { FC, useContext, useEffect, useState } from 'react';
 import { IItemDetails } from '@/interfaces/frontend/books';
-import BookImage from '@/components/frontend/books/bookimage/bookimage';
+import BookImage from '@/app/(frontend)/books/[book]/components/bookimage/bookimage';
 import Rating from '@/components/frontend/rating/rating';
-import AddToCart from '@/components/frontend/addtocart/addcart';
+import AddToCart from '@/app/(frontend)/books/[book]/components/addtocart/addcart';
 import CartContext from '@/store/frontend/cart/cartcontext';
 import { ICartItem } from '@/interfaces/frontend/cart';
-import AddWish from '@/components/frontend/addwish/wishlist';
+import AddWish from '@/app/(frontend)/books/[book]/components/addwish/wishlist';
 
 const BookDetail: FC<IItemDetails> = (props) => {
     const cartCtxt = useContext(CartContext);
