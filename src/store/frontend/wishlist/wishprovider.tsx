@@ -1,3 +1,5 @@
+'use client';
+
 import { useReducer, ReactNode, FC, useEffect } from "react";
 import WishContext from "@/store/frontend/wishlist/wishcontext";
 import { TypeWishAction } from "@/types/frontend/wish";

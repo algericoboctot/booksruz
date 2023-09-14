@@ -1,3 +1,5 @@
+"use client";
+
 import { IWishContextType, IWishItem } from '@/interfaces/frontend/wish';
 import { createContext } from 'react';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import { useReducer, ReactNode, useEffect } from "react";
 import CartContext from "./cartcontext";
 import { ICartItem, ICartState, ICartContextType } from "@/interfaces/frontend/cart";

@@ -1,3 +1,5 @@
+"use client";
+
 import { ICartContextType, ICartItem } from '@/interfaces/frontend/cart';
 import { createContext } from 'react';
 
