@@ -155,6 +155,10 @@ const SearchHeader = () => {
                                         onChange={handleInputChange}
                                         onFocus={handleSearchFocus}
                                     />
+                                    {(searchActive || filteredBooks?.length >= 0) && ((searchActive && !noResultsFound) && (
+                                            <button onClick={handleClearSearch} type="button" className="text-[#0A63F9] absolute z-10 right-[145px] text-[20px] top-1/2 translate-y-[-50%]">x</button>
+                                        )
+                                    )}
                                 </div>
                                 <button className="
                                         absolute 
@@ -196,12 +200,10 @@ const SearchHeader = () => {
                                         </ul>
                                         {allResultsLoaded ? 
                                             <div>
-                                                {showAllResultsLoadedMessage ?
+                                                {showAllResultsLoadedMessage &&
                                                     <p>
                                                         All results loaded
                                                     </p>
-                                                : 
-                                                    <button onClick={handleClearSearch} type="button" className="text-[#0A63F9]">Clear results</button>
                                                 }
                                             </div> 
                                         : 
