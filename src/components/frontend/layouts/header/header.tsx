@@ -1,5 +1,5 @@
 'use client';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import Logo from '@/icons/logo';
 import LogoName from '@/icons/logoname';
 import Link from 'next/link';
@@ -7,7 +7,6 @@ import MainNavigation from '@/components/frontend/layouts/navigation/navigation'
 import classes from '@/components/frontend/layouts/header/header.module.css';
 import CartStatus from '@/components/frontend/cart/cart';
 import Wishlists from '@/components/frontend/wishlist/wishlist';
-import { usePathname } from 'next/navigation';
 const MainHeader = () => {
     const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 

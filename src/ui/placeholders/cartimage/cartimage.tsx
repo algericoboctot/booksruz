@@ -16,7 +16,7 @@ const CartImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
        const [loading, setLoading] = useState<boolean>(true);
 
       useEffect(() => {
-        async function fetchBookIMageData() {
+        const fetchBookIMageData = async () => {
           try {
             const response = await fetchBooksImage(isbn);
             const data = await response;

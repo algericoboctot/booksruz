@@ -10,7 +10,8 @@ const CartStatus = () => {
     const items = cartCtx.items.length;
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-    
+                                  
+
     const mouseInHandler = () => {
         setHover(true);
     }
@@ -48,7 +49,12 @@ const CartStatus = () => {
                                 {cartCtx.items.map((item) => (
                                     <CartItemStatus
                                         key={item.id}
-                                        {...item}
+                                        id={item.id}
+                                        isbn={item.isbn}
+                                        title={item.title}
+                                        price={item.price}
+                                        amount={item.amount}
+                                        slug={item.slug}
                                         removeAll={cartItemRemoveAllHandler.bind(null, item.id)}
                                     />
                                 ))}
