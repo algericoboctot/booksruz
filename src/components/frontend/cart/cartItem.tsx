@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import CartImage from "@/ui/placeholders/cartimage/cartimage";
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { ICartAddRemoveItem } from '@/interfaces/frontend/cart';
 import { usePathname } from 'next/navigation';
 
@@ -20,11 +20,15 @@ const CartItemStatus:FC<ICartAddRemoveItem> = (props) => {
 
   const intPrice = `$${price.toFixed(2)}`;
 
+  const cartImage = useMemo(() =>{
+    return <CartImage isbn={isbn} imgSize='object-fill'/>
+  },[]);
+
   return (
     <li className="flex flex-row flex-wrap pb-[10px]">
           <div className="mr-auto w-[65px] h-[80px] border-[#260448] border-[1px]">
             <Link href={`${path}`}>
-              <CartImage isbn={isbn} imgSize='object-fill'/>
+              {cartImage}
             </Link>
           </div>
           <div className="ml-auto flex-col flex-wrap w-[calc(100%-80px)]">
