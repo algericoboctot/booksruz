@@ -49,12 +49,7 @@ const CartStatus = () => {
                                 {cartCtx.items.map((item) => (
                                     <CartItemStatus
                                         key={item.id}
-                                        id={item.id}
-                                        isbn={item.isbn}
-                                        title={item.title}
-                                        price={item.price}
-                                        amount={item.amount}
-                                        slug={item.slug}
+                                        {...item}
                                         removeAll={cartItemRemoveAllHandler.bind(null, item.id)}
                                     />
                                 ))}

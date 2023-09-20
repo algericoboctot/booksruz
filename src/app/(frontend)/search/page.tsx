@@ -58,7 +58,7 @@ const SearchPage = () => {
                 {(searchResults?.length > 0) ? <p className="text-[#313248] text-[24px] lg:text-[28px] md:mr-auto font-medium leading-[150%] mb-5">{searchCount} Search results &#34;{searchTerm}&#34;</p> : <p className="text-[#313248] text-[24px] lg:text-[28px] md:mr-auto font-medium leading-[150%] mb-5">0 Search results</p> }
                 <div className="flex flex-col sm:flex-row sm:flex-wrap sm:mx-[-16px] px-4 sm:px-0 2xl:px-0">
                     {(searchResults?.length > 0) && searchResults?.map((book: IItem) => 
-                        <BookItem key={book.id} {...book}/>
+                        <BookItem key={book.id} {...book} />
                     )}
                 </div>
             </div>            
