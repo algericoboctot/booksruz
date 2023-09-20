@@ -1,10 +1,9 @@
 'use client';
-import { useQuery } from 'react-query';
-import { Genres } from '@/types/frontend/books';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import fetchBooks from '@/libs/frontend/fetchBooks';
 
+import { Genres } from '@/types/frontend/books';
 
 const GenresList = () => {
      const [colors, setColors] = useState<string[]>([

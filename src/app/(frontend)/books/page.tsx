@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Banner from "@/components/frontend/layouts/banner/banner";
-import GenresList from "@/app/(frontend)/genres/components/genreslist";
+import GenresList from "@/app/(frontend)/books/components/genrelist/genreslist";
 import Search from "@/app/(frontend)/books/components/search/search";
 import BookListLoader from "@/ui/placeholders/booklist-loader/booklistplaceholder";
 import Pagination from '@/app/(frontend)/books/components/pagination/pagination';
