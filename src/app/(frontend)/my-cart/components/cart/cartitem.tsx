@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 
 const CartPageComponentItem: FC<ICartAddRemoveItem> = (props) => {
-    const { title, id, isbn, slug, itemTotalPrice, amount, removeOne, removeAll, addOne } = props;
+    const { title, isbn, slug, itemTotalPrice, amount, removeOne, removeAll, addOne } = props;
 
     const [path, setPath ] = useState<string>();
     const pathname = usePathname();
