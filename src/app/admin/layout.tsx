@@ -1,8 +1,6 @@
 import { ReactNode } from 'react';
 import '@/app/globals.css';
-import { Inter, Roboto } from 'next/font/google'
-import Head from 'next/head';
-import MainFooter from '@/components/frontend/layouts/footer/footer';
+import { Roboto } from 'next/font/google'
 import AdminHeader from '@/components/admin/layouts/header/header';
 import AdminFooter from '@/components/admin/layouts/footer/footer';
 
