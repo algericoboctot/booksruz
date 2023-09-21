@@ -11,7 +11,6 @@ const CartStatus = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
                                   
-
     const mouseInHandler = () => {
         setHover(true);
     }

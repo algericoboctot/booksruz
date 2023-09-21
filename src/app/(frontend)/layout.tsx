@@ -6,6 +6,7 @@ import MainFooter from '@/components/frontend/layouts/footer/footer';
 import CartProvider from '@/store/frontend/cart/cartprovider';
 import WishProvider from '@/store/frontend/wishlist/wishprovider';
 import BookQueryProvider from '@/ui/queryprovider/queryprovider';
+import AuthProvider from '@/store/auth/authprovider';
 
 const roboto = Roboto({
   weight: ['100','300','400','500','700','900'],
@@ -30,17 +31,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={classList.join(' ')}>
         <main className='relative'>
-          <BookQueryProvider>
-            <CartProvider>
-              <WishProvider>
-                <MainHeader />
-                  <section className='relative z-10'>
-                      {children}
-                  </section>
-                <MainFooter />
-              </WishProvider>
-            </CartProvider>
-          </BookQueryProvider>
+          <AuthProvider>
+            <BookQueryProvider>
+              <CartProvider>
+                <WishProvider>
+                  <MainHeader />
+                    <section className='relative z-10'>
+                        {children}
+                    </section>
+                  <MainFooter />
+                </WishProvider>
+              </CartProvider>
+            </BookQueryProvider>
+          </AuthProvider>
         </main>
       </body>
     </html>

@@ -3,14 +3,7 @@ const nextConfig = {}
 
 const openLibrary = {
     images: {
-      remotePatterns: [
-        {
-          protocol: 'http',
-          hostname: 'books.google.com',
-          port: '',
-          pathname: '/books/**',
-        },
-      ],
+      domains: ['avatars.githubusercontent.com','books.google.com'],
     }
 }
 

@@ -18,7 +18,6 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
   let updatedTotalAmount,
       existingCartItemIndex, 
       existingCartItem,
-      updateItemTotalAmout,
       existingItem,
       updatedItem,
       updatedTotalQty,
@@ -26,7 +25,7 @@ const cartReducer = (state: ICartState, action: TypeCartAction) => {
 
   switch(action.type) {
     case 'REPLACE':
-      return action.cart; 
+      return action.cart;
     case 'ADD_QTY':
       updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
       updatedTotalQty = state.totalQty + action.item.amount;

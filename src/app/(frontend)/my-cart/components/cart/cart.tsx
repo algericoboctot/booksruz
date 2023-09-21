@@ -7,7 +7,6 @@ import CartPageComponentItem from "./cartitem";
 import classes from './cart.module.css';
 import { ICartItem } from "@/interfaces/frontend/cart";
 import CartOrderSummary from "./ordersummary";
-import WishContext from "@/store/frontend/wishlist/wishcontext";
 
 const CartPageComponent = () => {
     const cartCtx = useContext(CartContext);
@@ -15,7 +14,6 @@ const CartPageComponent = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const totalAmount = cartCtx.totalAmount;
     const totalQty = cartCtx.totalQty;
-    const wishListCtx = useContext(WishContext);
 
     const cartItemRemoveAllHandler = async (id: string) => {
         setIsLoading(true);
