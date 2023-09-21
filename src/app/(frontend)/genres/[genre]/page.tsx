@@ -1,4 +1,3 @@
-
 import fetchBooks from "@/libs/frontend/fetchBooks";
 import { Genres, PageProps } from '@/types/frontend/books';
 
