@@ -16,7 +16,7 @@ const CartItemStatus:FC<ICartAddRemoveItem> = (props) => {
       if ( pathname ) {
           setPath(`/books/${slug}`);
       }
-  }, [path]);
+  }, [path, slug]);
 
   const intPrice = `$${price.toFixed(2)}`;
 

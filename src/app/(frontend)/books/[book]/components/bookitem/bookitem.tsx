@@ -14,7 +14,7 @@ const BookItem: FC<IItem> = ( { title, author, isbn, slug } ) => {
         if ( pathname ) {
             setPath(`/books/${slug}`);
         } 
-    }, [path]);
+    }, [path,slug]);
 
     return(
         <>
