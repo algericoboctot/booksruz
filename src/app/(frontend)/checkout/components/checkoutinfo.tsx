@@ -6,11 +6,8 @@ import CartOrderSummary from "./checkoutsummary";
 import Link from "next/link";
 import { User } from "@/types/users";
 
-type Props = {
-    user: User
-}
 
-const CheckOutInfo = ( { user } : Props ) => {
+const CheckOutInfo = () => {
 
     const cartCtx = useContext(CartContext);
     const totalAmount = cartCtx.totalAmount;
@@ -26,7 +23,7 @@ const CheckOutInfo = ( { user } : Props ) => {
                 </div>
                 <div className="flex w-10/12 mx-auto">
                     <div className="flex flex-auto w-3/5 flex-row pr-4">
-                        <div>{ user?.email }</div>
+                        <div></div>
                         <div className="ml-auto"><Link href="/api/auth/signout">Signout</Link></div>
                     </div>
                     <div className="flex-auto w-2/5 pl-4">

@@ -9,7 +9,7 @@ const CheckoutPage = async () => {
     return(
         <>
             <div className="container px-4 2xl:px-0 mb-[39px] lg:mb-[49px] xl:mb-[89px] relative z-0 top-0">
-                { session ? (<CheckOutInfo user={session?.user}/>) : (<h1>You shall not pass!</h1>) }
+                { session ? (<CheckOutInfo />) : (<h1>You shall not pass!</h1>) }
             </div>
         </>
     );

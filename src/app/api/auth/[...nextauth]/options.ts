@@ -6,10 +6,6 @@ import { ICustomers } from "@/interfaces/frontend/customers";
 
 export const options: NextAuthOptions = {
     providers: [
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string
-        }),
         CredentialsProvider({
             name: "Credentials",
             credentials: {
