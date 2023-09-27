@@ -1,21 +1,23 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import styles from './modal.module.css';
-
 const Backdrop = ({ onHideModal }: { onHideModal: () => void }) => {
-  return <div className={styles.backdrop} onClick={onHideModal} />;
+  return <div className="bg-black/[.50] w-full h-full absolute z-0" onClick={onHideModal} />;
 };
 
 const ModalOverlay = ({ children }: { children: ReactNode }) => {
   return (
-    <div className={styles.modal}>
-      <div className={styles.content}>{children}</div>
-    </div>
+    <>
+        <div className='relative w-full h-full flex'>
+            <div className="relative z-10 bg-white right-0 w-full max-w-2xl">
+                <div className="">{children}</div>
+            </div>
+        </div>
+    </>
   );
 };
 
-const Modal = ({ children, onHideModal }: { children: ReactNode; onHideModal: () => void }) => {
+const Modal = ({ children, onHideModal }: { children: ReactNode, onHideModal: () => void}) => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => {
@@ -28,8 +30,8 @@ const Modal = ({ children, onHideModal }: { children: ReactNode; onHideModal: ()
 
   return (
     <>
-      { createPortal(<Backdrop onHideModal={onHideModal} />, portalElement) as ReactNode }
-      { createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement) as ReactNode }
+        {createPortal(<Backdrop onHideModal={onHideModal} />, portalElement) }
+        {createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
     </>
   );
 };
