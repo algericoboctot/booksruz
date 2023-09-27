@@ -6,7 +6,7 @@ import { FC, useEffect, useState } from "react";
 import AddWishPage from "./addwish";
 
 const WishListItem: FC<IWishItem> = (props) => {
-    const {title, slug, isbn, author, colors, isWished} = props;
+    const {title, slug, isbn, author} = props;
     const [path, setPath ] = useState<string>();
     const pathname = usePathname();
     useEffect(() => {

@@ -1,8 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from "next-auth/providers/credentials";
 import customersLogin from "@/libs/frontend/fetchCustomers";
 import { ICustomers } from "@/interfaces/frontend/customers";
+import { Credentials } from "@/types/frontend/customers";
 
 export const options: NextAuthOptions = {
     providers: [
@@ -10,9 +10,9 @@ export const options: NextAuthOptions = {
             name: "Credentials",
             credentials: {
                 username: {
-                    label: "Username: ",
-                    type: "text",
-                    placeholder: "Username"
+                    label: "Email: ",
+                    type: "email",
+                    placeholder: "Email"
                 },
                 password: {
                     label: "Password: ",
@@ -20,11 +20,11 @@ export const options: NextAuthOptions = {
                     placeholder: "Password"
                 }
             },
-            async authorize(credentials: Record<"username" | "password", string> | undefined) {
+            async authorize(credentials: Credentials | undefined) {
                 const customers = await customersLogin();
                 
                 const matchingCustomer = customers.find((customer: ICustomers) => {
-                    return credentials?.username === customer.username && credentials?.password === customer.password;
+                    return credentials?.email === customer.email && credentials?.password === customer.password;
                 });
             
                 if (matchingCustomer) {

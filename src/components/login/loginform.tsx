@@ -1,8 +1,10 @@
 // components/Login.tsx
+'use client';
+
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
-const Login = () => {
+const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -51,4 +53,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default LoginForm;

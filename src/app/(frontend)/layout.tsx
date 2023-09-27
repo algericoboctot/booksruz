@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classList.join(' ')}>
+        <div id="overlays"></div>
         <main className='relative'>
           <AuthProvider>
             <BookQueryProvider>

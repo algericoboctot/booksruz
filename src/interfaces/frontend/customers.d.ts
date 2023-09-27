@@ -1,5 +1,5 @@
 export interface ICustomers {
+    email?: string;
     id: string | number;
-    username: string;
     password: string;
 }

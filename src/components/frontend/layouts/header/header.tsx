@@ -7,6 +7,7 @@ import MainNavigation from '@/components/frontend/layouts/navigation/navigation'
 import classes from '@/components/frontend/layouts/header/header.module.css';
 import CartStatus from '@/components/frontend/cart/cart';
 import Wishlists from '@/components/frontend/wishlist/wishlist';
+import Login from '@/components/login/login';
 const MainHeader = () => {
     const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
@@ -50,6 +51,7 @@ const MainHeader = () => {
                         <div className='md:ml-auto flex flex-row flex-wrap items-center gap-3 relative mb-4'>
                             <CartStatus />
                             <Wishlists />
+                            <Login />
                         </div>
                     </div>
                 </div>
