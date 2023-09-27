@@ -1,14 +1,27 @@
 'use client';
 
-import { getServerSession } from "next-auth";
-import Link from "next/link";
+import { useState } from "react";
 import LoginForm from "./loginform";
+import Modal from "@/ui/modal/modal";
 
-const Login = async () => {
+const Login = () => {
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const hideModalHandler = () => {
+        setShowModal(false);
+    }
+    const showModalHandler = () => {
+        setShowModal(true);
+    }
     return(
         <>
-            <button type="button"><span className="font-bold">Login</span> or <span className="font-bold">Register</span></button>
-            <LoginForm />
+            <button type="button" onClick={showModalHandler}>
+                <span className="font-bold">Login</span> or <span className="font-bold">Register</span>
+            </button>
+            {showModal &&
+                <Modal onHideModal={hideModalHandler}>
+                    <LoginForm />
+                </Modal>
+            }
         </>
     );
 }

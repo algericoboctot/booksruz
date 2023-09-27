@@ -1,34 +1,39 @@
-import React, { Fragment } from "react";
-import ReactDom, { createPortal } from 'react-dom';
+'use client';
 
-import styles from './modal.module.css';
+import { ReactNode, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
-const Backdrop = (props) => {
-    const { onHideCart } = props;
-    return <div className={styles.backdrop} onClick={ onHideCart } />
-}
+import styles from '@/ui/modal/modal.module.css';
 
-const ModalOverlay = (props) => {
-    const { children } = props;
-    return(
-        <div className={styles.modal}>
-            <div className={styles.content}>
-                { children } 
-            </div>
-        </div>
-    )
-}
+const Backdrop = ({ onHideModal }: { onHideModal: () => void }) => {
+  return <div className={styles.backdrop} onClick={onHideModal} />;
+};
 
-const portalElement = document.getElementById('overlays');
+const ModalOverlay = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className={styles.modal}>
+      <div className={styles.content}>{children}</div>
+    </div>
+  );
+};
 
-const Modal = (props) => {
-    const { children, onHideCart } = props;
-    return(
-        <>
-            {ReactDom.createPortal(<Backdrop onHideCart={onHideCart} />, portalElement)}
-            {ReactDom.createPortal(<ModalOverlay>{ children }</ModalOverlay>, portalElement)}
-        </>
-    )
-}
+const Modal = ({ children, onHideModal }: { children: ReactNode; onHideModal: () => void }) => {
+  const [isBrowser, setIsBrowser] = useState(false);
+
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
+
+  const portalElement = isBrowser ? document.getElementById('overlays') : null;
+
+  if (!portalElement) return null;
+
+  return (
+    <>
+      {createPortal(<Backdrop onHideModal={onHideModal} />, portalElement)}
+      {createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
+    </>
+  );
+};
 
 export default Modal;
