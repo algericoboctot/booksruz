@@ -4,7 +4,7 @@
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
-const LoginForm = () => {
+const LoginForm = ({}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,7 +24,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
+    <>
       <form onSubmit={handleLogin}>
         <div>
           <label htmlFor="username">Username:</label>
@@ -48,7 +48,7 @@ const LoginForm = () => {
         </div>
         <button type="submit">Log In</button>
       </form>
-    </div>
+    </>
   );
 }
 

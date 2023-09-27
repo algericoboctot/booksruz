@@ -19,6 +19,9 @@ const Login = () => {
             </button>
             {showModal &&
                 <Modal onHideModal={hideModalHandler}>
+                    <button type="button" onClick={hideModalHandler}>
+                        X
+                    </button>
                     <LoginForm />
                 </Modal>
             }

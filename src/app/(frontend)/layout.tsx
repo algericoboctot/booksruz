@@ -25,7 +25,7 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
-  const classList = [roboto.className,'bg-white'];
+  const classList = [roboto.className,'bg-white relative'];
 
   return (
     <html lang="en">
