@@ -1,15 +1,17 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
+import styles from '@/ui/modal/modal.module.css';
+
 const Backdrop = ({ onHideModal }: { onHideModal: () => void }) => {
-  return <div className="bg-black/[.50] w-full h-full absolute z-0" onClick={onHideModal} />;
+  return <div className={styles.backdrop} onClick={onHideModal} />;
 };
 
 const ModalOverlay = ({ children }: { children: ReactNode }) => {
   return (
     <>
-        <div className='relative w-full h-full flex'>
-            <div className="relative z-10 bg-white right-0 w-full max-w-2xl">
+        <div className={styles.modal}>
+            <div className={styles.content}>
                 <div className="">{children}</div>
             </div>
         </div>
