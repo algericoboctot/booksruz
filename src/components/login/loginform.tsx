@@ -5,14 +5,14 @@ import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
 const LoginForm = ({}) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
 
     const result = await signIn("Credentials", {
-      username,
+      email,
       password,
       callbackUrl: "/account", // Redirect to your desired page after login
     });
@@ -24,16 +24,17 @@ const LoginForm = ({}) => {
   };
 
   return (
-    <>
+    <div>
+      <h4 className="text-2xl mb-4">Login or Register</h4>
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="email">Email:</label>
           <input
             type="text"
-            id="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div>
@@ -48,7 +49,7 @@ const LoginForm = ({}) => {
         </div>
         <button type="submit">Log In</button>
       </form>
-    </>
+    </div>
   );
 }
 

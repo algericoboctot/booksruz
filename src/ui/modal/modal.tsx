@@ -12,7 +12,7 @@ const ModalOverlay = ({ children }: { children: ReactNode }) => {
     <>
         <div className={styles.modal}>
             <div className={styles.content}>
-                <div className="">{children}</div>
+                <div className="flex flex-col flex-wrap">{children}</div>
             </div>
         </div>
     </>
