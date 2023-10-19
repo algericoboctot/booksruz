@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [formError, setFormError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [loading, isLoading] = useState<boolean>(false);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
