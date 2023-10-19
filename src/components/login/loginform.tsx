@@ -37,8 +37,9 @@ const LoginForm = () => {
     <div>
       <h4 className="text-2xl mb-4">Login</h4>
       <form onSubmit={handleLogin}>
+      {formError && <div className="mb-4"><p className="text-[#ff0000]">email and password is empty!</p></div>}
         <div className="mb-4">
-          {formError && <p className="mb-2 text-[#ff0000]">email and password is empty!</p>}
+          
           <label htmlFor="email">Email:</label>
           <input
             type="text"
