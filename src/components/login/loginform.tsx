@@ -20,6 +20,13 @@ const LoginForm = () => {
       password,
       redirect: false
     });
+    if ( email === "") {
+      setEmailError(true);
+    }
+
+    if ( password === "") {
+      setPasswordError(true);
+    }
 
     if (result?.error) {
       setFormError(true);
@@ -28,26 +35,28 @@ const LoginForm = () => {
 
   return (
     <div>
-      <h4 className="text-2xl mb-4">Login or Register</h4>
+      <h4 className="text-2xl mb-4">Login</h4>
       <form onSubmit={handleLogin}>
-        <div>
-          {formError && <p>email and password is empty!</p>}
+        <div className="mb-4">
+          {formError && <p className="mb-2 text-[#ff0000]">email and password is empty!</p>}
           <label htmlFor="email">Email:</label>
           <input
             type="text"
             id="email"
             placeholder="Email"
             value={email}
+            className={(emailError || formError) ? 'border-2 border-[#ff0000]' : 'border-2 border-[#260448]'}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+        <div className="mb-4">
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             placeholder="Password"
             value={password}
+            className={(passwordError || formError) ? 'border-2 border-[#ff0000]' : 'border-2 border-[#260448]'}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

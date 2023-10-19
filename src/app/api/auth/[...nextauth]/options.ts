@@ -7,7 +7,7 @@ import { Credentials } from "@/types/frontend/customers";
 export const options: NextAuthOptions = {
     providers: [
         CredentialsProvider({
-            name: "Credentials",
+            name: "Login Credentials",
             credentials: {
                 email: {
                     label: "Email: ",
