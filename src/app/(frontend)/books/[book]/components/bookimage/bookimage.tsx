@@ -46,7 +46,7 @@ const BookImage: FC<{ isbn: string, imgSize: string }> = memo(({ isbn, imgSize})
           {loading ? (<BookImageLoader />) : (
             <>
               {imagePath ? (
-                <Image className={`${imgSize}`} src={imagePath} alt={`${imageTitle}`} sizes="100vw" fill={true} />
+                <Image className={`${imgSize} aspect-[3/4]`} src={imagePath} alt={`${imageTitle}`} sizes="100vw" fill={true} />
               ) : (
                 <BookCover />
               )}

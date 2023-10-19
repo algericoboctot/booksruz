@@ -4,22 +4,24 @@
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
-const LoginForm = ({}) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [formError, setFormError] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
 
-    const result = await signIn("Credentials", {
+    const result = await signIn("credentials", {
       email,
       password,
-      callbackUrl: "/account", // Redirect to your desired page after login
+      redirect: false
     });
 
     if (result?.error) {
-      // Handle login error
-      console.error(result?.error);
+      setFormError(true);
     }
   };
 
@@ -28,6 +30,7 @@ const LoginForm = ({}) => {
       <h4 className="text-2xl mb-4">Login or Register</h4>
       <form onSubmit={handleLogin}>
         <div>
+          {formError && <p>email and password is empty!</p>}
           <label htmlFor="email">Email:</label>
           <input
             type="text"
