@@ -1,5 +1,4 @@
 export type Credentials = {
-    id?: string | number;
-    email?: string;
+    email: string;
     password: string;
 };

@@ -10,16 +10,17 @@ const LoginForm = () => {
   const [formError, setFormError] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<boolean>(false);
   const [passwordError, setPasswordError] = useState<boolean>(false);
-  const [loading, isLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-
+    setIsLoading(true);
     const result = await signIn("credentials", {
       email,
       password,
       redirect: false
     });
+
     if ( email === "") {
       setEmailError(true);
     }
@@ -29,8 +30,9 @@ const LoginForm = () => {
     }
 
     if (result?.error) {
-      setFormError(true);
+      console.log(result?.error);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -61,7 +63,7 @@ const LoginForm = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit">Log In</button>
+        <button type="submit" disabled={isLoading}>{isLoading ? 'Logging In...' : 'Login'}</button>
       </form>
     </div>
   );
