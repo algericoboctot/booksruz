@@ -22,7 +22,7 @@ const GenresContent = ( {params} : PageProps ) => {
     const { genre } = params;
       
     //Use Query Handling
-    const { isLoading, isError, data } = useQueryBooks();
+    const { isLoading, data } = useQueryBooks();
 
     //useStates
     const [genreWord, setGenreWord] = useState(genre);

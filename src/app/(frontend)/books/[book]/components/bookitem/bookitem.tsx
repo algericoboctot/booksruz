@@ -3,7 +3,7 @@ import React, { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IItem } from "@/interfaces/frontend/books";
 import BookImage from "@/app/(frontend)/books/[book]/components/bookimage/bookimage";
-import { usePathname, useRouter, useSearchParams  } from 'next/navigation';
+import { usePathname  } from 'next/navigation';
 
 
 const BookItem: FC<IItem> = ( { title, author, isbn, slug } ) => {
